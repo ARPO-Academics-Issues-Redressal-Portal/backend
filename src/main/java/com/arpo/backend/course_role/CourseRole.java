@@ -1,6 +1,6 @@
 package com.arpo.backend.course_role;
 
-//This is comment.
+
 import javax.persistence.*;
 
 

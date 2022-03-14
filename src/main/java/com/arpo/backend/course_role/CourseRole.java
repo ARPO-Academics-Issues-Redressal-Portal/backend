@@ -1,8 +1,8 @@
 package com.arpo.backend.course_role;
 
-//Added
-import javax.persistence.*;
 
+import javax.persistence.*;
+//for course role
 
 @Entity
 @Table (name = "course_role")

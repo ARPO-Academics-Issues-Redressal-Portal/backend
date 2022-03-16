@@ -1,4 +1,4 @@
-package com.arpo.backend.course_role;
+package com.arpo.backend.courserole;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,4 +28,6 @@ public class CourseRoleService {
     public void deleteCourseRole(String uuid){
         courseRoleRepo.deleteById(uuid);
     }
+
+    public CourseRole findByProfileId(Integer profile_id) {return courseRoleRepo.findByProfileId(profile_id); }
 }

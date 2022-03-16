@@ -13,7 +13,7 @@ public class PrivateQueryService{
     @Autowired
     private PrivateQueryRepo privateQueryRepo;
 
-    public List<PrivateQuery> listAllPrivateQueries()  {
+    public List<PrivateQuery> listAllPrivateQuery()  {
         return privateQueryRepo.findAll();
     }
 

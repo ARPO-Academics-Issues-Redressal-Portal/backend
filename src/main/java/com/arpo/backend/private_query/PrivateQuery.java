@@ -35,7 +35,7 @@ public class PrivateQuery {
     public PrivateQuery(String uuid, String title, int profile_id, String description,int upvotes,String course,String status,String receiver_email_id,String parent_uuid,String child_uuid) {
         this.uuid = uuid;
         this.title=title;
-        this profile_id=profile_id;
+        this.profile_id=profile_id;
         this.description=description;
         this.upvotes=upvotes;
         this.course=course;
@@ -49,59 +49,89 @@ public class PrivateQuery {
         return uuid;
     }
     public String getTitle() {
+
         return title;
     }
+
     public int getProfile_id() {
+
         return profile_id;
     }
 
     public String getDescription() {
+
         return description;
     }
 
     public int getUpvotes() {
+
         return upvotes;
     }
     public String getCourse() {
+
         return course;
     }
     public String getStatus() {
+
         return status;
     }
+
     public String getReceiver_email_id() {
-        return receiver_email_id;}
+
+        return receiver_email_id;
+    }
+
     public String getParent_uuid() {
-        return parent_uuid;}
-    public String getChild_uuid_uuid() {
-        return child_uuid;}
+
+        return parent_uuid;
+    }
+
+    public String getChild_uuid() {
+        return child_uuid;
+    }
 
 
-    public void setUuid() {
+    public void setUuid(String uuid) {
         this.uuid= uuid;
     }
-    public void setTitle() {
+
+    public void setTitle(String title) {
+
         this.title= title;
     }
-    public void setProfile_id() {
-        this profile_id=profile_id;
+    public void setProfile_id(int profile_id) {
+
+        this.profile_id=profile_id;
     }
 
-    public void setDescription() { this.description=description;
+    public void setDescription(String description) {
+
+        this.description=description;
     }
 
-    public void setUpvotes() {
+    public void setUpvotes(int upvotes) {
+
         this.upvotes=upvotes;
     }
-    public void setCourse() {
+
+    public void setCourse(String Course) {
+
         this.course=course;
     }
-    public void setStatus() {
+    public void setStatus(String Status) {
+
         this.status=status;
     }
-    public void setReceiver_email_id() {
-        this.receiver_email_id=receiver_email_id;}
-    public void setParent_uuid() {
-        this.parent_uuid=parent_uuid;}
-    public void setChild_uuid_uuid() {
-        this.child_uuid=child_uuid;}
+    public void setReceiver_email_id(String receiver_email_id) {
+
+        this.receiver_email_id=receiver_email_id;
+    }
+    public void setParent_uuid(String parent_uuid) {
+
+        this.parent_uuid=parent_uuid;
+    }
+    public void setChild_uuid(String child_uuid) {
+
+        this.child_uuid=child_uuid;
+    }
 }

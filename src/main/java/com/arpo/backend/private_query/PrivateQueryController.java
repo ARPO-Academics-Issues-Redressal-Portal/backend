@@ -13,14 +13,14 @@ import java.util.NoSuchElementException;
 
 
 @RestController
-@RequestMapping("/privateQueries")
+@RequestMapping("/privateQuery")
 public class PrivateQueryController {
     @Autowired
     PrivateQueryService privateQueryService;
 
     @GetMapping("")
     public List<PrivateQuery> list(){
-        return privateQueryService.listAllPrivateQueries();
+        return privateQueryService.listAllPrivateQuery();
     }
 
     @GetMapping("/{uuid}")

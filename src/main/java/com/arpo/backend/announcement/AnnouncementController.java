@@ -18,7 +18,7 @@ public class AnnouncementController {
     @Autowired
     AnnouncementService announcementService;
 
-    @GetMapping("")
+    @GetMapping("") 
     public List<Announcement> list(){
         return announcementService.listAllAnnouncement();
     }

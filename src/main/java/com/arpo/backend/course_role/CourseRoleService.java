@@ -25,6 +25,10 @@ public class CourseRoleService {
         return courseRoleRepo.findById(uuid).get();
     }
 
+    public List<CourseRole> getCourseRoleByProfileId(Integer profile_id){
+        return courseRoleRepo.findById(profile_id).get();
+    }
+
     public void deleteCourseRole(String uuid){
         courseRoleRepo.deleteById(uuid);
     }

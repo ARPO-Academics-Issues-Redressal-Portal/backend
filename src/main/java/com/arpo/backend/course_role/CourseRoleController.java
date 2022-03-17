@@ -33,6 +33,16 @@ public class CourseRoleController {
         }
     }
 
+    @GetMapping("/{profile_id}")
+    public ResponseEntity<List<CourseRole>> get(@PathVariable Integer profile_id){
+        try {
+            List<CourseRole> courseRole = courseRoleService.getCourseRoleByProfileId(profile_id);
+            return new ResponseEntity<List<CourseRole>>(courseRole, HttpStatus.OK);
+        } catch (NoSuchElementException e) {
+            return new ResponseEntity<List<CourseRole>>(HttpStatus.NOT_FOUND);
+        }
+    }
+
     @PostMapping("/")
     public void add(@RequestBody CourseRole courseRole){
         courseRoleService.saveCourseRole(courseRole);

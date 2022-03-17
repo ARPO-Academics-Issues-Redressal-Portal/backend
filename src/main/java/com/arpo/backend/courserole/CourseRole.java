@@ -1,4 +1,4 @@
-package com.arpo.backend.course_role;
+package com.arpo.backend.courserole;
 
 
 import javax.persistence.*;
@@ -30,6 +30,7 @@ public class CourseRole {
     public String getUuid() {
         return uuid;
     }
+
     public int getProfile_id() {
         return profile_id;
     }

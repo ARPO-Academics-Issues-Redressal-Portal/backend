@@ -1,12 +1,12 @@
-package com.arpo.backend.other_query;
+package com.arpo.backend.privatequery;
 
 
 import javax.persistence.*;
 
 
 @Entity
-@Table (name = "other_query")
-public class OtherQuery {
+@Table (name = "private_query")
+public class PrivateQuery {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private String uuid;
@@ -17,6 +17,10 @@ public class OtherQuery {
     @Column
     private String description;
     @Column
+    private int upvotes;
+    @Column
+    private String course;
+    @Column
     private String status;
     @Column
     private String receiver_email_id;
@@ -25,14 +29,16 @@ public class OtherQuery {
     @Column
     private String date_time;
 
-    public OtherQuery () {
+    public PrivateQuery () {
 
     }
-    public OtherQuery(String uuid, String title, int profile_id, String description,String status,String receiver_email_id,String parent_uuid,String date_time) {
+    public PrivateQuery(String uuid, String title, int profile_id, String description,int upvotes,String course,String status,String receiver_email_id,String parent_uuid,String date_time) {
         this.uuid = uuid;
         this.title=title;
         this.profile_id=profile_id;
         this.description=description;
+        this.upvotes=upvotes;
+        this.course=course;
         this.status=status;
         this.receiver_email_id=receiver_email_id;
         this.parent_uuid=parent_uuid;
@@ -57,6 +63,14 @@ public class OtherQuery {
         return description;
     }
 
+    public int getUpvotes() {
+
+        return upvotes;
+    }
+    public String getCourse() {
+
+        return course;
+    }
     public String getStatus() {
 
         return status;
@@ -95,6 +109,15 @@ public class OtherQuery {
         this.description=description;
     }
 
+    public void setUpvotes(int upvotes) {
+
+        this.upvotes=upvotes;
+    }
+
+    public void setCourse(String Course) {
+
+        this.course=course;
+    }
     public void setStatus(String Status) {
 
         this.status=status;

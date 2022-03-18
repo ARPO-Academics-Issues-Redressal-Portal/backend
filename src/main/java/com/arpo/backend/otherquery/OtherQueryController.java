@@ -1,7 +1,4 @@
-package com.arpo.backend.other_query;
-
-import com.arpo.backend.other_query.OtherQuery;
-import com.arpo.backend.other_query.OtherQueryService;
+package com.arpo.backend.otherquery;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

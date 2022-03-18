@@ -1,4 +1,4 @@
-package com.arpo.backend.other_query;
+package com.arpo.backend.otherquery;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

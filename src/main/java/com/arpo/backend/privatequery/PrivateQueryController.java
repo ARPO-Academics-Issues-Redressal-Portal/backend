@@ -1,7 +1,4 @@
-package com.arpo.backend.private_query;
-
-import com.arpo.backend.private_query.PrivateQuery;
-import com.arpo.backend.private_query.PrivateQueryService;
+package com.arpo.backend.privatequery;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

@@ -27,12 +27,12 @@ public class PrivateQuery {
     @Column
     private String parent_uuid;
     @Column
-    private String child_uuid;
+    private String date_time;
 
     public PrivateQuery () {
 
     }
-    public PrivateQuery(String uuid, String title, int profile_id, String description,int upvotes,String course,String status,String receiver_email_id,String parent_uuid,String child_uuid) {
+    public PrivateQuery(String uuid, String title, int profile_id, String description,int upvotes,String course,String status,String receiver_email_id,String parent_uuid,String date_time) {
         this.uuid = uuid;
         this.title=title;
         this.profile_id=profile_id;
@@ -42,7 +42,7 @@ public class PrivateQuery {
         this.status=status;
         this.receiver_email_id=receiver_email_id;
         this.parent_uuid=parent_uuid;
-        this.child_uuid=child_uuid;
+        this.date_time=date_time;
     }
 
     public String getUuid() {
@@ -86,8 +86,8 @@ public class PrivateQuery {
         return parent_uuid;
     }
 
-    public String getChild_uuid() {
-        return child_uuid;
+    public String getDate_time() {
+        return date_time;
     }
 
 
@@ -130,8 +130,8 @@ public class PrivateQuery {
 
         this.parent_uuid=parent_uuid;
     }
-    public void setChild_uuid(String child_uuid) {
+    public void setDate_time(String date_time) {
 
-        this.child_uuid=child_uuid;
+        this.date_time=date_time;
     }
 }

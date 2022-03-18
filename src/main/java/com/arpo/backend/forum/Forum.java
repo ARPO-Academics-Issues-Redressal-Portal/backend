@@ -24,11 +24,14 @@ public class Forum {
     private String receiver_email_id;
     @Column
     private boolean post_anonymous;
+    @Column
+    private String date_time;
+
 
     public Forum () {
 
     }
-    public Forum (String uuid, String title, int profile_id, String description, int likes, String course, String receiver_email_id, boolean post_anonymous) {
+    public Forum (String uuid, String title, int profile_id, String description, int likes, String course, String receiver_email_id, boolean post_anonymous, String date_time) {
         this.uuid = uuid;
         this.title = title;
         this.profile_id = profile_id;
@@ -37,6 +40,7 @@ public class Forum {
         this.course = course;
         this.receiver_email_id = receiver_email_id;
         this.post_anonymous = post_anonymous;
+        this.date_time = date_time;
     }
 
     public String getUuid() {
@@ -68,7 +72,13 @@ public class Forum {
     }
 
     public boolean getPost_anonymous() {
+
         return post_anonymous;
+    }
+
+    public String getDate_time() {
+
+        return date_time;
     }
 
     public void setUuid(String uuid) {
@@ -101,5 +111,9 @@ public class Forum {
 
     public void setPost_anonymous(boolean post_anonymous) {
         this.post_anonymous = post_anonymous;
+    }
+
+    public void setDate_time(String date_time) {
+        this.date_time = date_time;
     }
 }

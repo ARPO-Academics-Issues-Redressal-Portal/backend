@@ -52,7 +52,7 @@ public class CourseRoleController {
         courseRoleService.deleteCourseRole(uuid);
     }
 
-    @GetMapping("/role/{profile_id}")
+    /* @GetMapping("/role/{profile_id}")
     public ResponseEntity<?> get(@PathVariable Integer profile_id){
         try{
             CourseRole courseRole = courseRoleService.findByProfileId(profile_id);
@@ -60,5 +60,5 @@ public class CourseRoleController {
         } catch (NoSuchElementException e){
             return new ResponseEntity<CourseRole>(HttpStatus.NOT_FOUND);
         }
-    }
+    }*/
 }

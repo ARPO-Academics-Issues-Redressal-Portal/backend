@@ -29,5 +29,5 @@ public class CourseRoleService {
         courseRoleRepo.deleteById(uuid);
     }
 
-    public CourseRole findByProfileId(Integer profile_id) {return courseRoleRepo.findByProfileId(profile_id); }
+    //public CourseRole findByProfileId(Integer profile_id) {return courseRoleRepo.findByProfileId(profile_id); }
 }

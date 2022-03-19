@@ -18,19 +18,19 @@ public class Announcement {
     @Column
     private String Course;
     @Column
-    private String Date;
+    private String date_time;
 
     public Announcement () {
 
     }
     public Announcement (String uuid, String heading, String description,int sender
-            ,String course, String date) {
+            ,String course, String date_time) {
         this.uuid = uuid;
         this.Heading=heading;
         this.Description=description;
         this.Course = course;
         this.Sender = sender;
-        this.Date= date;
+        this.date_time= date_time;
     }
 
     public String getUuid() {
@@ -51,8 +51,8 @@ public class Announcement {
         return Course;
     }
 
-    public String getDate() {
-        return Date;
+    public String getDate_time() {
+        return date_time;
     }
 
     public void setUuid(String uuid) {
@@ -74,7 +74,8 @@ public class Announcement {
         this.Course = course;
     }
 
-    public void setDate(String date) {
-        this.Date = date;
+    public void setDate_time(String date_time) {
+
+        this.date_time=date_time;
     }
 }

@@ -25,15 +25,13 @@ public class CourseRoleService {
         return courseRoleRepo.findById(uuid).get();
     }
 
-    public List<CourseRole> getCourseRoleByProfileId(Integer profile_id){
-        return courseRoleRepo.findById(profile_id).get();
+    public List<CourseRole> getCourseByProfile_id(Integer profile_id){
+        return courseRoleRepo.getCourseByProfile_id(profile_id);
     }
 
     public void deleteCourseRole(String uuid){
         courseRoleRepo.deleteById(uuid);
     }
-
-//    public CourseRole findByProfileId(Integer profile_id) {return courseRoleRepo.findByProfileId(profile_id); }
 
     public List<CourseRole> findByRole(String role) {return courseRoleRepo.findByRole(role);}
 }

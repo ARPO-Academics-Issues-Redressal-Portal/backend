@@ -15,4 +15,9 @@ public interface CourseRoleRepo extends JpaRepository<CourseRole, String> {
     @Query(value = "select * from course_role c where c.role = ?1",
             nativeQuery = true)
     public List<CourseRole> findByRole(String role);
+
+
+    @Query(value = "select * from course_role c where c.profile_id = ?1",
+            nativeQuery = true)
+    public List<CourseRole> getCourseByProfile_id(Integer profile_id);
 }

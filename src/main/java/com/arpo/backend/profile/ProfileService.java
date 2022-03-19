@@ -33,4 +33,8 @@ public class ProfileService {
     public Profile profileByProfileID(Integer profile_id){
         return profileRepo.profileByProfileID(profile_id);
     }
+
+    public Profile findProfileID(String login_id, String password){
+        return profileRepo.findProfileID(login_id,password);
+    }
 }

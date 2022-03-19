@@ -52,6 +52,17 @@ public class ProfileController {
         }
     }
 
+    @GetMapping("profileByloginAndPassword")
+    public ResponseEntity<?> findProfileID(@RequestParam String login_id, @RequestParam String password)
+    {
+        try{
+            Profile profile = profileService.findProfileID(login_id,password);
+            return new ResponseEntity<Profile>(profile, HttpStatus.OK);
+        } catch (NoSuchElementException e){
+            return new ResponseEntity<Profile>(HttpStatus.NOT_FOUND);
+        }
+    }
+
     @DeleteMapping("/{uuid}")
     public void delete(@PathVariable String uuid) {
         profileService.deleteProfile(uuid);
@@ -66,5 +77,4 @@ public class ProfileController {
             return new ResponseEntity<Profile>(HttpStatus.NOT_FOUND);
         }
     }
-
 }

@@ -1,4 +1,4 @@
-package com.arpo.backend.forum_response;
+package com.arpo.backend.forumresponse;
 
 
 import javax.persistence.*;
@@ -22,11 +22,13 @@ public class ForumResponse {
     private int likes;
     @Column
     private boolean post_anonymous;
+    @Column
+    private String date_time;
 
     public ForumResponse () {
 
     }
-    public ForumResponse (String uuid, String forum_uuid, String responder_email_id, String response_text, String course, int likes, boolean post_anonymous) {
+    public ForumResponse (String uuid, String forum_uuid, String responder_email_id, String response_text, String course, int likes, boolean post_anonymous, String date_time) {
         this.uuid = uuid;
         this.forum_uuid = forum_uuid;
         this.responder_email_id = responder_email_id;
@@ -34,6 +36,7 @@ public class ForumResponse {
         this.course = course;
         this.likes = likes;
         this.post_anonymous = post_anonymous;
+        this.date_time =date_time;
     }
 
     public String getUuid() {
@@ -64,6 +67,10 @@ public class ForumResponse {
         return post_anonymous;
     }
 
+    public String getDate_time() {
+        return date_time;
+    }
+
     public void setUuid(String uuid) {
         this.uuid = uuid;
     }
@@ -91,4 +98,9 @@ public class ForumResponse {
     public void setRole(boolean post_anonymous) {
         this.post_anonymous = post_anonymous;
     }
+
+    public void setRole(String date_time) {
+        this.date_time = date_time;
+    }
+
 }

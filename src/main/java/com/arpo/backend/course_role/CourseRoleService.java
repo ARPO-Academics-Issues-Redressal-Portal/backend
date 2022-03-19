@@ -1,9 +1,9 @@
-package com.arpo.backend.courserole;
+package com.arpo.backend.course_role;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import javax.transaction.Transactional;
 import java.util.List;
 
 
@@ -33,5 +33,7 @@ public class CourseRoleService {
         courseRoleRepo.deleteById(uuid);
     }
 
-    public CourseRole findByProfileId(Integer profile_id) {return courseRoleRepo.findByProfileId(profile_id); }
+//    public CourseRole findByProfileId(Integer profile_id) {return courseRoleRepo.findByProfileId(profile_id); }
+
+    public List<CourseRole> findByRole(String role) {return courseRoleRepo.findByRole(role);}
 }

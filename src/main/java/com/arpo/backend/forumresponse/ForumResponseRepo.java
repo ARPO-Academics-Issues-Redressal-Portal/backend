@@ -1,4 +1,4 @@
-package com.arpo.backend.forum_response;
+package com.arpo.backend.forumresponse;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

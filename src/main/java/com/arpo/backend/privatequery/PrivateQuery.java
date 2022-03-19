@@ -17,31 +17,25 @@ public class PrivateQuery {
     @Column
     private String description;
     @Column
-    private int upvotes;
-    @Column
     private String course;
     @Column
     private String status;
     @Column
     private String receiver_email_id;
     @Column
-    private String parent_uuid;
-    @Column
     private String date_time;
 
     public PrivateQuery () {
 
     }
-    public PrivateQuery(String uuid, String title, int profile_id, String description,int upvotes,String course,String status,String receiver_email_id,String parent_uuid,String date_time) {
+    public PrivateQuery(String uuid, String title, int profile_id, String description,String course,String status,String receiver_email_id,String date_time) {
         this.uuid = uuid;
         this.title=title;
         this.profile_id=profile_id;
         this.description=description;
-        this.upvotes=upvotes;
         this.course=course;
         this.status=status;
         this.receiver_email_id=receiver_email_id;
-        this.parent_uuid=parent_uuid;
         this.date_time=date_time;
     }
 
@@ -63,10 +57,7 @@ public class PrivateQuery {
         return description;
     }
 
-    public int getUpvotes() {
 
-        return upvotes;
-    }
     public String getCourse() {
 
         return course;
@@ -79,11 +70,6 @@ public class PrivateQuery {
     public String getReceiver_email_id() {
 
         return receiver_email_id;
-    }
-
-    public String getParent_uuid() {
-
-        return parent_uuid;
     }
 
     public String getDate_time() {
@@ -109,10 +95,6 @@ public class PrivateQuery {
         this.description=description;
     }
 
-    public void setUpvotes(int upvotes) {
-
-        this.upvotes=upvotes;
-    }
 
     public void setCourse(String Course) {
 
@@ -126,10 +108,7 @@ public class PrivateQuery {
 
         this.receiver_email_id=receiver_email_id;
     }
-    public void setParent_uuid(String parent_uuid) {
 
-        this.parent_uuid=parent_uuid;
-    }
     public void setDate_time(String date_time) {
 
         this.date_time=date_time;

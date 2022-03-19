@@ -24,11 +24,13 @@ public class ForumResponse {
     private boolean post_anonymous;
     @Column
     private String date_time;
+    @Column
+    private String receiver_email_id;
 
     public ForumResponse () {
 
     }
-    public ForumResponse (String uuid, String forum_uuid, String responder_email_id, String response_text, String course, int likes, boolean post_anonymous, String date_time) {
+    public ForumResponse (String uuid, String forum_uuid, String responder_email_id, String response_text, String course, int likes, boolean post_anonymous, String date_time, String receiver_email_id) {
         this.uuid = uuid;
         this.forum_uuid = forum_uuid;
         this.responder_email_id = responder_email_id;
@@ -37,6 +39,7 @@ public class ForumResponse {
         this.likes = likes;
         this.post_anonymous = post_anonymous;
         this.date_time =date_time;
+        this.receiver_email_id = receiver_email_id;
     }
 
     public String getUuid() {
@@ -71,6 +74,10 @@ public class ForumResponse {
         return date_time;
     }
 
+    public String getReceiver_email_id() {
+        return receiver_email_id;
+    }
+
     public void setUuid(String uuid) {
         this.uuid = uuid;
     }
@@ -101,6 +108,10 @@ public class ForumResponse {
 
     public void setRole(String date_time) {
         this.date_time = date_time;
+    }
+
+    public void setReceiver_email_id(String receiver_email_id) {
+        this.receiver_email_id = receiver_email_id;
     }
 
 }

@@ -1,5 +1,6 @@
 package com.arpo.backend.forumresponse;
 
+import com.arpo.backend.forum.Forum;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -50,5 +51,15 @@ public class ForumResponseController {
     @DeleteMapping("/{uuid}")
     public void delete(@PathVariable String uuid) {
         forumResponseService.deleteForumResponse(uuid);
+    }
+
+    @GetMapping("/forumResponses/{forumUuid}")
+    public ResponseEntity<?> getForum(@PathVariable String forumUuid){
+        try{
+            List<ForumResponse> forumResponses = forumResponseService.forumResponseByForumUUID(forumUuid);
+            return new ResponseEntity<List<ForumResponse>>(forumResponses, HttpStatus.OK);
+        } catch (NoSuchElementException e){
+            return new ResponseEntity<ForumResponse>(HttpStatus.NOT_FOUND);
+        }
     }
 }

@@ -1,5 +1,6 @@
 package com.arpo.backend.forum;
 
+import com.arpo.backend.announcement.Announcement;
 import com.arpo.backend.forum.Forum;
 import com.arpo.backend.forum.ForumService;
 
@@ -53,5 +54,15 @@ public class ForumController {
     @DeleteMapping("/{uuid}")
     public void delete(@PathVariable String uuid) {
         forumService.deleteForum(uuid);
+    }
+
+    @GetMapping("/forums/{course}")
+    public ResponseEntity<?> getForum(@PathVariable String course){
+        try{
+            List<Forum> forums = forumService.forumByCourse(course);
+            return new ResponseEntity<List<Forum>>(forums, HttpStatus.OK);
+        } catch (NoSuchElementException e){
+            return new ResponseEntity<Forum>(HttpStatus.NOT_FOUND);
+        }
     }
 }

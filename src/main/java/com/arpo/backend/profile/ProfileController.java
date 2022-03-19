@@ -1,5 +1,6 @@
 package com.arpo.backend.profile;
 
+import com.arpo.backend.announcement.Announcement;
 import com.arpo.backend.profile.Profile;
 import com.arpo.backend.profile.ProfileService;
 
@@ -54,4 +55,6 @@ public class ProfileController {
     public void delete(@PathVariable String uuid) {
         profileService.deleteProfile(uuid);
     }
+
+
 }

@@ -1,5 +1,6 @@
 package com.arpo.backend.forum;
 
+import com.arpo.backend.announcement.Announcement;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,5 +29,9 @@ public class ForumService {
 
     public void deleteForum(String uuid){
         forumRepo.deleteById(uuid);
+    }
+
+    public List<Forum> forumByCourse(String course){
+        return forumRepo.forumByCourse(course);
     }
 }

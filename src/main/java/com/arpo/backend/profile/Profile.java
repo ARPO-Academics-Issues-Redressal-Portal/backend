@@ -19,16 +19,19 @@ public class Profile {
     private String phone_no;
     @Column
     private String email_id;
+    @Column
+    private String name;
 
     public Profile () {
 
     }
-    public Profile (String uuid, String login_id, String password, int profile_id, String phone_no, String email_id) {
+    public Profile (String uuid, String login_id, String password, int profile_id, String phone_no, String email_id, String name) {
         this.login_id = login_id;
         this.password = password;
         this.profile_id = profile_id;
         this.phone_no = phone_no;
         this.email_id = email_id;
+        this.name = name;
     }
 
     public String getUuid() {
@@ -55,6 +58,10 @@ public class Profile {
         return email_id;
     }
 
+    public String getName() {
+        return name;
+    }
+
     public void setUuid(String uuid) {
         this.uuid = uuid;
     }
@@ -77,5 +84,9 @@ public class Profile {
 
     public void setEmail_id(String email_id) {
         this.email_id = email_id;
+    }
+
+    public void setName(String name) {
+        this.name =name;
     }
 }

@@ -1,7 +1,4 @@
-package com.arpo.backend.forum_response;
-
-import com.arpo.backend.forum_response.ForumResponse;
-import com.arpo.backend.forum_response.ForumResponseService;
+package com.arpo.backend.forumresponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

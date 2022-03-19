@@ -62,6 +62,16 @@ public class CourseRoleController {
         }
     }
 
+    @GetMapping("/courses/{course}")
+    public ResponseEntity<?> getParticipants(@PathVariable String course){
+        try{
+            List<CourseRole> courseRoles = courseRoleService.findByCourse(course);
+            return new ResponseEntity<List<CourseRole>>(courseRoles, HttpStatus.OK);
+        } catch (NoSuchElementException e){
+            return new ResponseEntity<CourseRole>(HttpStatus.NOT_FOUND);
+        }
+    }
+
     @GetMapping("/profiles/{profile_id}")
     public ResponseEntity<?> getProfiles(@PathVariable Integer profile_id){
         try{

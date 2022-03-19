@@ -2,6 +2,11 @@ package com.arpo.backend.announcement;
 
 import javax.persistence.*;
 
+import org.springframework.core.convert.converter.Converter;
+import org.springframework.lang.NonNull;
+import org.springframework.stereotype.Component;
+
+import java.util.UUID;
 
 @Entity
 @Table (name = "announcement")

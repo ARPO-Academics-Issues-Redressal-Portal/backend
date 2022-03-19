@@ -34,4 +34,6 @@ public class CourseRoleService {
     }
 
     public List<CourseRole> findByRole(String role) {return courseRoleRepo.findByRole(role);}
+
+    public List<CourseRole> findByCourse(String course) {return courseRoleRepo.findByCourse(course);}
 }

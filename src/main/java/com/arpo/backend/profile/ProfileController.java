@@ -1,6 +1,7 @@
 package com.arpo.backend.profile;
 
 import com.arpo.backend.announcement.Announcement;
+import com.arpo.backend.course_role.CourseRole;
 import com.arpo.backend.profile.Profile;
 import com.arpo.backend.profile.ProfileService;
 
@@ -56,5 +57,14 @@ public class ProfileController {
         profileService.deleteProfile(uuid);
     }
 
+    @GetMapping("/profiles/{profile_id}")
+    public ResponseEntity<?> getProfiles(@PathVariable Integer profile_id){
+        try{
+            Profile profile = profileService.profileByProfileID(profile_id);
+            return new ResponseEntity<Profile>(profile, HttpStatus.OK);
+        } catch (NoSuchElementException e){
+            return new ResponseEntity<Profile>(HttpStatus.NOT_FOUND);
+        }
+    }
 
 }

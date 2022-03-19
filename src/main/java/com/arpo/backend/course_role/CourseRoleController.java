@@ -1,4 +1,4 @@
-package com.arpo.backend.courserole;
+package com.arpo.backend.course_role;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -52,11 +52,20 @@ public class CourseRoleController {
         courseRoleService.deleteCourseRole(uuid);
     }
 
-    @GetMapping("/role/{profile_id}")
-    public ResponseEntity<?> get(@PathVariable Integer profile_id){
+//    @GetMapping("/role/{profile_id}")
+//    public ResponseEntity<?> get(@PathVariable Integer profile_id){
+//        try{
+//            CourseRole courseRole = courseRoleService.findByProfileId(profile_id);
+//            return new ResponseEntity<CourseRole>(courseRole, HttpStatus.OK);
+//        } catch (NoSuchElementException e){
+//            return new ResponseEntity<CourseRole>(HttpStatus.NOT_FOUND);
+//        }
+//    }
+    @GetMapping("/roles/{role}")
+    public ResponseEntity<?> getRoles(@PathVariable String role){
         try{
-            CourseRole courseRole = courseRoleService.findByProfileId(profile_id);
-            return new ResponseEntity<CourseRole>(courseRole, HttpStatus.OK);
+            List<CourseRole> courseRoles = courseRoleService.findByRole(role);
+            return new ResponseEntity<List<CourseRole>>(courseRoles, HttpStatus.OK);
         } catch (NoSuchElementException e){
             return new ResponseEntity<CourseRole>(HttpStatus.NOT_FOUND);
         }

@@ -1,20 +1,20 @@
-package com.arpo.backend.courserole;
+package com.arpo.backend.course_role;
 
 
 import javax.persistence.*;
 
 
-@Entity
+@Entity(name = "CourseRole")
 @Table (name = "course_role")
 public class CourseRole {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private String uuid;
-    @Column
+    @Column(name = "course")
     private String course;
-    @Column
+    @Column(name = "profile_id")
     private int profile_id;
-    @Column
+    @Column(name = "role")
     private String role;
 
     public CourseRole () {

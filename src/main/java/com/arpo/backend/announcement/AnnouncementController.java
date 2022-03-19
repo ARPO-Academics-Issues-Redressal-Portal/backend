@@ -3,6 +3,7 @@ package com.arpo.backend.announcement;
 import com.arpo.backend.announcement.Announcement;
 import com.arpo.backend.announcement.AnnouncementService;
 
+import com.arpo.backend.course_role.CourseRole;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -53,5 +54,15 @@ public class AnnouncementController {
     @DeleteMapping("/{uuid}")
     public void delete(@PathVariable String uuid) {
         announcementService.deleteAnnouncement(uuid);
+    }
+
+    @GetMapping("/courses/{course}")
+    public ResponseEntity<?> getAnnouncement(@PathVariable String course){
+        try{
+            List<Announcement> announcements = announcementService.announcementByCourse(course);
+            return new ResponseEntity<List<Announcement>>(announcements, HttpStatus.OK);
+        } catch (NoSuchElementException e){
+            return new ResponseEntity<Announcement>(HttpStatus.NOT_FOUND);
+        }
     }
 }

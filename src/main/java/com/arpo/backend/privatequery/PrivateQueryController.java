@@ -1,5 +1,6 @@
 package com.arpo.backend.privatequery;
 
+import com.arpo.backend.profile.Profile;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -50,5 +51,16 @@ public class PrivateQueryController {
     @DeleteMapping("/{uuid}")
     public void delete(@PathVariable String uuid) {
         privateQueryService.deletePrivateQuery(uuid);
+    }
+
+    @GetMapping("queryByProfileIdAndCourse")
+    public ResponseEntity<?> findQueries(@RequestParam Integer profile_id, @RequestParam String course)
+    {
+        try{
+            List<PrivateQuery> query = privateQueryService.findQueries(profile_id,course);
+            return new ResponseEntity<List<PrivateQuery>>(query, HttpStatus.OK);
+        } catch (NoSuchElementException e){
+            return new ResponseEntity<PrivateQuery>(HttpStatus.NOT_FOUND);
+        }
     }
 }

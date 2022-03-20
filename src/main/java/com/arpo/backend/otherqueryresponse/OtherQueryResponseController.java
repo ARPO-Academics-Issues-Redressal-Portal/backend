@@ -1,5 +1,6 @@
 package com.arpo.backend.otherqueryresponse;
 
+import com.arpo.backend.forumresponse.ForumResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -51,4 +52,6 @@ public class OtherQueryResponseController {
     public void delete(@PathVariable String uuid) {
         otherQueryResponseService.deleteOtherQueryResponse(uuid);
     }
+
+
 }

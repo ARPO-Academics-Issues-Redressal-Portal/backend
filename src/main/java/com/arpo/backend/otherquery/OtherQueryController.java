@@ -51,4 +51,6 @@ public class OtherQueryController {
     public void delete(@PathVariable String uuid) {
         otherQueryService.deleteOtherQuery(uuid);
     }
+
+
 }

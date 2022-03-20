@@ -1,5 +1,6 @@
 package com.arpo.backend.privatequeryresponse;
 
+import com.arpo.backend.forumresponse.ForumResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -50,5 +51,15 @@ public class PrivateQueryResponseController {
     @DeleteMapping("/{uuid}")
     public void delete(@PathVariable String uuid) {
         privateQueryResponseService.deletePrivateQueryResponse(uuid);
+    }
+
+    @GetMapping("/queryResponses/{queryUuid}")
+    public ResponseEntity<?> getResponses(@PathVariable String queryUuid){
+        try{
+            List<PrivateQueryResponse> queryResponses = privateQueryResponseService.queryResponseByQueryUUID(queryUuid);
+            return new ResponseEntity<List<PrivateQueryResponse>>(queryResponses, HttpStatus.OK);
+        } catch (NoSuchElementException e){
+            return new ResponseEntity<PrivateQueryResponse>(HttpStatus.NOT_FOUND);
+        }
     }
 }

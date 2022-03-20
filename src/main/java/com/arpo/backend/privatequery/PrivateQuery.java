@@ -24,11 +24,13 @@ public class PrivateQuery {
     private String receiver_email_id;
     @Column
     private String date_time;
+    @Column
+    private String category;
 
     public PrivateQuery () {
 
     }
-    public PrivateQuery(String uuid, String title, int profile_id, String description,String course,String status,String receiver_email_id,String date_time) {
+    public PrivateQuery(String uuid, String title, int profile_id, String description,String course,String status,String receiver_email_id,String date_time, String category) {
         this.uuid = uuid;
         this.title=title;
         this.profile_id=profile_id;
@@ -37,6 +39,7 @@ public class PrivateQuery {
         this.status=status;
         this.receiver_email_id=receiver_email_id;
         this.date_time=date_time;
+        this.category=category;
     }
 
     public String getUuid() {
@@ -76,6 +79,10 @@ public class PrivateQuery {
         return date_time;
     }
 
+    public String getCategory() {
+        return category;
+    }
+
 
     public void setUuid(String uuid) {
         this.uuid= uuid;
@@ -113,4 +120,10 @@ public class PrivateQuery {
 
         this.date_time=date_time;
     }
+
+    public void setCategory(String category) {
+
+        this.category=category;
+    }
+
 }

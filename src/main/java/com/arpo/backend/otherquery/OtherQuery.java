@@ -21,22 +21,22 @@ public class OtherQuery {
     @Column
     private String receiver_email_id;
     @Column
-    private String parent_uuid;
-    @Column
     private String date_time;
+    @Column
+    private String category;
 
     public OtherQuery () {
 
     }
-    public OtherQuery(String uuid, String title, int profile_id, String description,String status,String receiver_email_id,String parent_uuid,String date_time) {
+    public OtherQuery(String uuid, String title, int profile_id, String description,String status,String receiver_email_id,String date_time, String category) {
         this.uuid = uuid;
         this.title=title;
         this.profile_id=profile_id;
         this.description=description;
         this.status=status;
         this.receiver_email_id=receiver_email_id;
-        this.parent_uuid=parent_uuid;
         this.date_time=date_time;
+        this.category =category;
     }
 
     public String getUuid() {
@@ -67,13 +67,13 @@ public class OtherQuery {
         return receiver_email_id;
     }
 
-    public String getParent_uuid() {
-
-        return parent_uuid;
-    }
 
     public String getDate_time() {
         return date_time;
+    }
+
+    public String getCategory() {
+        return category;
     }
 
 
@@ -103,12 +103,14 @@ public class OtherQuery {
 
         this.receiver_email_id=receiver_email_id;
     }
-    public void setParent_uuid(String parent_uuid) {
 
-        this.parent_uuid=parent_uuid;
-    }
     public void setDate_time(String date_time) {
 
         this.date_time=date_time;
+    }
+
+    public void setCategory(String category) {
+
+        this.category=category;
     }
 }

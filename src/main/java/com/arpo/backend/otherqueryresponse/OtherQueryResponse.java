@@ -17,8 +17,6 @@ public class OtherQueryResponse {
     @Column
     private String responder_email_id;
     @Column
-    private String course;
-    @Column
     private String date_time;
     @Column
     private String response_text;
@@ -26,12 +24,11 @@ public class OtherQueryResponse {
     public OtherQueryResponse () {
 
     }
-    public OtherQueryResponse(String uuid, String query_uuid, String receiver_email_id,String responder_email_id,String course,String date_time, String response_text) {
+    public OtherQueryResponse(String uuid, String query_uuid, String receiver_email_id,String responder_email_id,String date_time, String response_text) {
         this.uuid = uuid;
         this.query_uuid=query_uuid;
         this.receiver_email_id=receiver_email_id;
         this.responder_email_id=responder_email_id;
-        this.course=course;
         this.date_time=date_time;
         this.response_text=response_text;
     }
@@ -55,10 +52,7 @@ public class OtherQueryResponse {
     }
 
 
-    public String getCourse() {
 
-        return course;
-    }
 
     public String getDate_time() {
         return date_time;
@@ -87,10 +81,7 @@ public class OtherQueryResponse {
     }
 
 
-    public void setCourse(String Course) {
 
-        this.course=course;
-    }
 
     public void setDate_time(String date_time) {
 

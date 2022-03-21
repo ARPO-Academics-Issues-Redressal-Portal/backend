@@ -21,17 +21,25 @@ public class Profile {
     private String email_id;
     @Column
     private String name;
+    @Column
+    private String department;
+    @Column
+    private String roll_number;
+
 
     public Profile () {
 
     }
-    public Profile (String uuid, String login_id, String password, int profile_id, String phone_no, String email_id, String name) {
+    public Profile (String uuid, String login_id, String password, int profile_id, String phone_no, String email_id, String name, String department, String roll_number) {
+        this.uuid = uuid;
         this.login_id = login_id;
         this.password = password;
         this.profile_id = profile_id;
         this.phone_no = phone_no;
         this.email_id = email_id;
         this.name = name;
+        this.department = department;
+        this.roll_number = roll_number;
     }
 
     public String getUuid() {
@@ -62,6 +70,14 @@ public class Profile {
         return name;
     }
 
+    public String getDepartment() {
+        return department;
+    }
+
+    public String getRoll_number() {
+        return roll_number;
+    }
+
     public void setUuid(String uuid) {
         this.uuid = uuid;
     }
@@ -87,6 +103,14 @@ public class Profile {
     }
 
     public void setName(String name) {
-        this.name =name;
+        this.name = name;
+    }
+
+    public void setDepartment(String department) {
+        this.department = department;
+    }
+
+    public void setRoll_number(String roll_number) {
+        this.roll_number = roll_number;
     }
 }

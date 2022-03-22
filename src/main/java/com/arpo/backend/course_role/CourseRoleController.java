@@ -35,7 +35,7 @@ public class CourseRoleController {
         courseRoleService.saveCourseRole(courseRole);
     }
 
-    @PutMapping("/{uuid}")
+    @PutMapping("/update/{uuid}")
     public ResponseEntity<?> update(@RequestBody CourseRole courseRole, @PathVariable String uuid){
         try {
             CourseRole existCourseRole = courseRoleService.getCourseRole(uuid);
@@ -47,13 +47,13 @@ public class CourseRoleController {
         }
     }
 
-    @DeleteMapping("/{uuid}")
+    @DeleteMapping("/delete/{uuid}")
     public void delete(@PathVariable String uuid) {
         courseRoleService.deleteCourseRole(uuid);
     }
 
-    @GetMapping("/roles/{role}")
-    public ResponseEntity<?> getRoles(@PathVariable String role){
+    @GetMapping("/roles")
+    public ResponseEntity<?> getRoles(@RequestParam String role){
         try{
             List<CourseRole> courseRoles = courseRoleService.findByRole(role);
             return new ResponseEntity<List<CourseRole>>(courseRoles, HttpStatus.OK);
@@ -62,8 +62,8 @@ public class CourseRoleController {
         }
     }
 
-    @GetMapping("/courses/{course}")
-    public ResponseEntity<?> getParticipants(@PathVariable String course){
+    @GetMapping("/courses")
+    public ResponseEntity<?> getParticipants(@RequestParam String course){
         try{
             List<CourseRole> courseRoles = courseRoleService.findByCourse(course);
             return new ResponseEntity<List<CourseRole>>(courseRoles, HttpStatus.OK);
@@ -72,8 +72,8 @@ public class CourseRoleController {
         }
     }
 
-    @GetMapping("/profiles/{profile_id}")
-    public ResponseEntity<?> getProfiles(@PathVariable Integer profile_id){
+    @GetMapping("/coursesByProfile_Id")
+    public ResponseEntity<?> getCourses(@RequestParam Integer profile_id){
         try{
             List<CourseRole> courseRoles = courseRoleService.getCourseByProfile_id(profile_id);
             return new ResponseEntity<List<CourseRole>>(courseRoles, HttpStatus.OK);

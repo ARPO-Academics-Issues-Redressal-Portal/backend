@@ -59,7 +59,7 @@ public class ProfileController {
             Profile profile = profileService.findProfileID(login_id,password);
             return new ResponseEntity<Profile>(profile, HttpStatus.OK);
         } catch (NoSuchElementException e){
-            return new ResponseEntity<Profile>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<Profile>( HttpStatus.NOT_FOUND);
         }
     }
 

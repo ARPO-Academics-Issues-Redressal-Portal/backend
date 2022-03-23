@@ -46,8 +46,8 @@ public class AnnouncementController {
     @PutMapping("/{uuid}")
     public ResponseEntity<?> update(@RequestBody Announcement announcement, @PathVariable String uuid){
         try {
-            Announcement existannouncement = announcementService.getAnnouncement(uuid);
-            announcement.setUuid(uuid);
+            Announcement gotAnnouncement = announcementService.getAnnouncement(uuid);
+            gotAnnouncement.setUuid(uuid);
             announcementService.saveAnnouncement(announcement);
             return new ResponseEntity<>(HttpStatus.OK);
         } catch (NoSuchElementException e){
@@ -60,10 +60,10 @@ public class AnnouncementController {
         announcementService.deleteAnnouncement(uuid);
     }
 
-    @GetMapping("/courses/{course}")
-    public ResponseEntity<?> getAnnouncement(@PathVariable String course){
+    @GetMapping("/courses")
+    public ResponseEntity<?> getAnnouncement(@RequestParam String courseName){
         try{
-            List<Announcement> announcements = announcementService.announcementByCourse(course);
+            List<Announcement> announcements = announcementService.announcementByCourse(courseName);
             return new ResponseEntity<List<Announcement>>(announcements, HttpStatus.OK);
         } catch (NoSuchElementException e){
             return new ResponseEntity<Announcement>(HttpStatus.NOT_FOUND);

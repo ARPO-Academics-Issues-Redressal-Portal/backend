@@ -21,15 +21,15 @@ public class PrivateQueryResponseService{
         privateQueryResponseRepo.save(privateQueryResponse);
     }
 
-    public PrivateQueryResponse getPrivateQueryResponse(String uuid){
+    public PrivateQueryResponse getPrivateQueryResponse(int uuid){
         return privateQueryResponseRepo.findById(uuid).get();
     }
 
-    public void deletePrivateQueryResponse(String uuid){
+    public void deletePrivateQueryResponse(int uuid){
         privateQueryResponseRepo.deleteById(uuid);
     }
 
-    public List<PrivateQueryResponse> queryResponseByQueryUUID(String query_uuid){
+    public List<PrivateQueryResponse> queryResponseByQueryUUID(int query_uuid){
         return privateQueryResponseRepo.queryResponseByQueryUUID(query_uuid);
     }
 }

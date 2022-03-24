@@ -2,19 +2,12 @@ package com.arpo.backend.announcement;
 
 import javax.persistence.*;
 
-import org.hibernate.annotations.GenericGenerator;
-import org.springframework.core.convert.converter.Converter;
-import org.springframework.lang.NonNull;
-import org.springframework.stereotype.Component;
-
-import java.util.UUID;
-
 @Entity
 @Table (name = "announcement")
 public class Announcement {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private String uuid;
+    private int uuid;
     @Column
     private String Heading;
     @Column
@@ -29,8 +22,8 @@ public class Announcement {
     public Announcement () {
 
     }
-    public Announcement (String uuid, String heading, String description,int sender
-            ,String course, String date_time) {
+    public Announcement (int uuid, String heading, String description, int sender
+            , String course, String date_time) {
         this.uuid = uuid;
         this.Heading=heading;
         this.Description=description;
@@ -39,7 +32,7 @@ public class Announcement {
         this.date_time= date_time;
     }
 
-    public String getUuid() {
+    public int getUuid() {
         return uuid;
     }
 
@@ -61,7 +54,7 @@ public class Announcement {
         return date_time;
     }
 
-    public void setUuid(String uuid) {
+    public void setUuid(int uuid) {
         this.uuid = uuid;
     }
 

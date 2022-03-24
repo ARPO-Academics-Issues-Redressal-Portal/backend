@@ -1,6 +1,5 @@
 package com.arpo.backend.privatequery;
 
-import com.arpo.backend.profile.Profile;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,11 +21,11 @@ public class PrivateQueryService{
         privateQueryRepo.save(privateQuery);
     }
 
-    public PrivateQuery getPrivateQuery(String uuid){
+    public PrivateQuery getPrivateQuery(int uuid){
         return privateQueryRepo.findById(uuid).get();
     }
 
-    public void deletePrivateQuery(String uuid){
+    public void deletePrivateQuery(int uuid){
         privateQueryRepo.deleteById(uuid);
     }
 

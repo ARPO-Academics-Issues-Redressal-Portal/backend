@@ -1,6 +1,5 @@
 package com.arpo.backend.profile;
 
-import com.arpo.backend.forum.Forum;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,11 +21,11 @@ public class ProfileService {
         profileRepo.save(profile);
     }
 
-    public Profile getProfile(String uuid){
+    public Profile getProfile(int uuid){
         return profileRepo.findById(uuid).get();
     }
 
-    public void deleteProfile(String uuid){
+    public void deleteProfile(int uuid){
         profileRepo.deleteById(uuid);
     }
 

@@ -9,7 +9,7 @@ import javax.persistence.*;
 public class CourseRole {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private String uuid;
+    private int uuid;
     @Column(name = "course")
     private String course;
     @Column(name = "profile_id")
@@ -20,14 +20,14 @@ public class CourseRole {
     public CourseRole () {
 
     }
-    public CourseRole (String uuid, String course, int profile_id, String role) {
+    public CourseRole (int uuid, String course, int profile_id, String role) {
         this.uuid = uuid;
         this.course = course;
         this.profile_id = profile_id;
         this.role = role;
     }
 
-    public String getUuid() {
+    public int getUuid() {
         return uuid;
     }
 
@@ -43,7 +43,7 @@ public class CourseRole {
         return role;
     }
 
-    public void setUuid(String uuid) {
+    public void setUuid(int uuid) {
         this.uuid = uuid;
     }
 

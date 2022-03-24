@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 import java.util.UUID;
 import java.util.List;
 
-public interface AnnouncementRepo extends JpaRepository<Announcement, String> {
+public interface AnnouncementRepo extends JpaRepository<Announcement, Integer> {
     @Query(value = "select * from announcement a where a.course = ?1",
             nativeQuery = true)
     public List<Announcement> announcementByCourse(String course);

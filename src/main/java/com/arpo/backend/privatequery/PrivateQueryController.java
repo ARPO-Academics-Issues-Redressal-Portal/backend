@@ -1,6 +1,5 @@
 package com.arpo.backend.privatequery;
 
-import com.arpo.backend.profile.Profile;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,7 +21,7 @@ public class PrivateQueryController {
     }
 
     @GetMapping("/{uuid}")
-    public ResponseEntity<PrivateQuery> get(@PathVariable String uuid){
+    public ResponseEntity<PrivateQuery> get(@PathVariable int uuid){
         try {
             PrivateQuery privateQuery = privateQueryService.getPrivateQuery(uuid);
             return new ResponseEntity<PrivateQuery>(privateQuery, HttpStatus.OK);
@@ -37,7 +36,7 @@ public class PrivateQueryController {
     }
 
     @PutMapping("update/{uuid}")
-    public ResponseEntity<?> update(@RequestBody PrivateQuery privateQuery, @PathVariable String uuid){
+    public ResponseEntity<?> update(@RequestBody PrivateQuery privateQuery, @PathVariable int uuid){
         try {
             PrivateQuery existPrivateQuery = privateQueryService.getPrivateQuery(uuid);
             privateQuery.setUuid(uuid);
@@ -49,7 +48,7 @@ public class PrivateQueryController {
     }
 
     @DeleteMapping("delete/{uuid}")
-    public void delete(@PathVariable String uuid) {
+    public void delete(@PathVariable int uuid) {
         privateQueryService.deletePrivateQuery(uuid);
     }
 

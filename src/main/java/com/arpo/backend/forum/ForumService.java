@@ -1,6 +1,5 @@
 package com.arpo.backend.forum;
 
-import com.arpo.backend.announcement.Announcement;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,11 +22,11 @@ public class ForumService {
         forumRepo.save(forum);
     }
 
-    public Forum getForum(String uuid){
+    public Forum getForum(int uuid){
         return forumRepo.findById(uuid).get();
     }
 
-    public void deleteForum(String uuid){
+    public void deleteForum(int uuid){
         forumRepo.deleteById(uuid);
     }
 

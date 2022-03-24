@@ -21,7 +21,7 @@ public class CourseRoleService {
         courseRoleRepo.save(courseRole);
     }
 
-    public CourseRole getCourseRole(String uuid){
+    public CourseRole getCourseRole(int uuid){
         return courseRoleRepo.findById(uuid).get();
     }
 
@@ -29,7 +29,7 @@ public class CourseRoleService {
         return courseRoleRepo.getCourseByProfile_id(profile_id);
     }
 
-    public void deleteCourseRole(String uuid){
+    public void deleteCourseRole(int uuid){
         courseRoleRepo.deleteById(uuid);
     }
 

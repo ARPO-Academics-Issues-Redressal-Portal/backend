@@ -21,11 +21,11 @@ public class NotificationService {
         notificationRepo.save(notification);
     }
 
-    public Notification getNotification(String uuid){
+    public Notification getNotification(int uuid){
         return notificationRepo.findById(uuid).get();
     }
 
-    public void deleteNotification(String uuid){
+    public void deleteNotification(int uuid){
         notificationRepo.deleteById(uuid);
     }
 }

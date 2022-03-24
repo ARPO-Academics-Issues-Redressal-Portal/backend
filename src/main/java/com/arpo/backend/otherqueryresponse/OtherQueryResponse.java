@@ -9,9 +9,9 @@ import javax.persistence.*;
 public class OtherQueryResponse {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private String uuid;
+    private int uuid;
     @Column
-    private String query_uuid;
+    private int query_uuid;
     @Column
     private String receiver_email_id;
     @Column
@@ -24,7 +24,7 @@ public class OtherQueryResponse {
     public OtherQueryResponse () {
 
     }
-    public OtherQueryResponse(String uuid, String query_uuid, String receiver_email_id,String responder_email_id,String date_time, String response_text) {
+    public OtherQueryResponse(int uuid, int query_uuid, String receiver_email_id, String responder_email_id, String date_time, String response_text) {
         this.uuid = uuid;
         this.query_uuid=query_uuid;
         this.receiver_email_id=receiver_email_id;
@@ -33,10 +33,10 @@ public class OtherQueryResponse {
         this.response_text=response_text;
     }
 
-    public String getUuid() {
+    public int getUuid() {
         return uuid;
     }
-    public String getQuery_uuid() {
+    public int getQuery_uuid() {
 
         return query_uuid;
     }
@@ -62,11 +62,11 @@ public class OtherQueryResponse {
         return response_text;
     }
 
-    public void setUuid(String uuid) {
+    public void setUuid(int uuid) {
         this.uuid= uuid;
     }
 
-    public void setQuery_uuid(String query_uuid) {
+    public void setQuery_uuid(int query_uuid) {
 
         this.query_uuid= query_uuid;
     }

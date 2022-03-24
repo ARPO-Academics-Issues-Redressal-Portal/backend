@@ -21,11 +21,11 @@ public class OtherQueryService{
         otherQueryRepo.save(otherQuery);
     }
 
-    public OtherQuery getOtherQuery(String uuid){
+    public OtherQuery getOtherQuery(int uuid){
         return otherQueryRepo.findById(uuid).get();
     }
 
-    public void deleteOtherQuery(String uuid){
+    public void deleteOtherQuery(int uuid){
         otherQueryRepo.deleteById(uuid);
     }
 }

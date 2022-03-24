@@ -1,9 +1,5 @@
 package com.arpo.backend.forum;
 
-import com.arpo.backend.announcement.Announcement;
-import com.arpo.backend.forum.Forum;
-import com.arpo.backend.forum.ForumService;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,7 +21,7 @@ public class ForumController {
     }
 
     @GetMapping("/{uuid}")
-    public ResponseEntity<Forum> get(@PathVariable String uuid){
+    public ResponseEntity<Forum> get(@PathVariable int uuid){
         try {
             Forum forum = forumService.getForum(uuid);
             return new ResponseEntity<Forum>(forum, HttpStatus.OK);
@@ -40,7 +36,7 @@ public class ForumController {
     }
 
     @PutMapping("update/{uuid}")
-    public ResponseEntity<?> update(@RequestBody Forum forum, @PathVariable String uuid){
+    public ResponseEntity<?> update(@RequestBody Forum forum, @PathVariable int uuid){
         try {
             Forum existForum = forumService.getForum(uuid);
             forum.setUuid(uuid);
@@ -52,7 +48,7 @@ public class ForumController {
     }
 
     @DeleteMapping("delete/{uuid}")
-    public void delete(@PathVariable String uuid) {
+    public void delete(@PathVariable int uuid) {
         forumService.deleteForum(uuid);
     }
 

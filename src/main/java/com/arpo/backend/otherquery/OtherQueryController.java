@@ -21,7 +21,7 @@ public class OtherQueryController {
     }
 
     @GetMapping("/{uuid}")
-    public ResponseEntity<OtherQuery> get(@PathVariable String uuid){
+    public ResponseEntity<OtherQuery> get(@PathVariable int uuid){
         try {
             OtherQuery otherQuery = otherQueryService.getOtherQuery(uuid);
             return new ResponseEntity<OtherQuery>(otherQuery, HttpStatus.OK);
@@ -36,7 +36,7 @@ public class OtherQueryController {
     }
 
     @PutMapping("update/{uuid}")
-    public ResponseEntity<?> update(@RequestBody OtherQuery otherQuery, @PathVariable String uuid){
+    public ResponseEntity<?> update(@RequestBody OtherQuery otherQuery, @PathVariable int uuid){
         try {
             OtherQuery existOtherQuery = otherQueryService.getOtherQuery(uuid);
             otherQuery.setUuid(uuid);
@@ -48,7 +48,7 @@ public class OtherQueryController {
     }
 
     @DeleteMapping("delete/{uuid}")
-    public void delete(@PathVariable String uuid) {
+    public void delete(@PathVariable int uuid) {
         otherQueryService.deleteOtherQuery(uuid);
     }
 

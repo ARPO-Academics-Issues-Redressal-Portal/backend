@@ -9,7 +9,7 @@ import com.arpo.backend.course_role.CourseRole;
 import java.util.List;
 
 @Repository
-public interface CourseRoleRepo extends JpaRepository<CourseRole, String> {
+public interface CourseRoleRepo extends JpaRepository<CourseRole, Integer> {
 //    @Query("select c from course_role where c.profile_id = ?1")
 //    public CourseRole findByProfileId(Integer profile_id);
     @Query(value = "select * from course_role c where c.role = ?1",

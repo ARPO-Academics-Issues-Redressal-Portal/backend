@@ -1,10 +1,5 @@
 package com.arpo.backend.profile;
 
-import com.arpo.backend.announcement.Announcement;
-import com.arpo.backend.course_role.CourseRole;
-import com.arpo.backend.profile.Profile;
-import com.arpo.backend.profile.ProfileService;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -26,7 +21,7 @@ public class ProfileController {
     }
 
     @GetMapping("/{uuid}")
-    public ResponseEntity<Profile> get(@PathVariable String uuid){
+    public ResponseEntity<Profile> get(@PathVariable int uuid){
         try {
             Profile profile = profileService.getProfile(uuid);
             return new ResponseEntity<Profile>(profile, HttpStatus.OK);
@@ -41,7 +36,7 @@ public class ProfileController {
     }
 
     @PutMapping("update/{uuid}")
-    public ResponseEntity<?> update(@RequestBody Profile profile, @PathVariable String uuid){
+    public ResponseEntity<?> update(@RequestBody Profile profile, @PathVariable int uuid){
         try {
             Profile existProfile = profileService.getProfile(uuid);
             profile.setUuid(uuid);
@@ -53,7 +48,7 @@ public class ProfileController {
     }
 
     @DeleteMapping("delete/{uuid}")
-    public void delete(@PathVariable String uuid) {
+    public void delete(@PathVariable int uuid) {
         profileService.deleteProfile(uuid);
     }
 

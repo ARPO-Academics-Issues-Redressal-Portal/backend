@@ -21,7 +21,7 @@ public class PrivateQueryResponseController {
     }
 
     @GetMapping("/{uuid}")
-    public ResponseEntity<PrivateQueryResponse> get(@PathVariable String uuid){
+    public ResponseEntity<PrivateQueryResponse> get(@PathVariable int uuid){
         try {
             PrivateQueryResponse privateQueryResponse = privateQueryResponseService.getPrivateQueryResponse(uuid);
             return new ResponseEntity<PrivateQueryResponse>(privateQueryResponse, HttpStatus.OK);
@@ -36,7 +36,7 @@ public class PrivateQueryResponseController {
     }
 
     @PutMapping("update/{uuid}")
-    public ResponseEntity<?> update(@RequestBody PrivateQueryResponse privateQueryResponse, @PathVariable String uuid){
+    public ResponseEntity<?> update(@RequestBody PrivateQueryResponse privateQueryResponse, @PathVariable int uuid){
         try {
             PrivateQueryResponse existPrivateQueryResponse = privateQueryResponseService.getPrivateQueryResponse(uuid);
             privateQueryResponse.setUuid(uuid);
@@ -48,12 +48,12 @@ public class PrivateQueryResponseController {
     }
 
     @DeleteMapping("delete/{uuid}")
-    public void delete(@PathVariable String uuid) {
+    public void delete(@PathVariable int uuid) {
         privateQueryResponseService.deletePrivateQueryResponse(uuid);
     }
 
     @GetMapping("/privateQueryResponseByQueryUUID")
-    public ResponseEntity<?> getResponses(@RequestParam String queryUuid){
+    public ResponseEntity<?> getResponses(@RequestParam int queryUuid){
         try{
             List<PrivateQueryResponse> queryResponses = privateQueryResponseService.queryResponseByQueryUUID(queryUuid);
             return new ResponseEntity<List<PrivateQueryResponse>>(queryResponses, HttpStatus.OK);

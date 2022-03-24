@@ -9,7 +9,7 @@ import javax.persistence.*;
 public class Forum {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private String uuid;
+    private int uuid;
     @Column
     private String title;
     @Column
@@ -31,7 +31,7 @@ public class Forum {
     public Forum () {
 
     }
-    public Forum (String uuid, String title, int profile_id, String description, int likes, String course, String receiver_email_id, boolean post_anonymous, String date_time) {
+    public Forum (int uuid, String title, int profile_id, String description, int likes, String course, String receiver_email_id, boolean post_anonymous, String date_time) {
         this.uuid = uuid;
         this.title = title;
         this.profile_id = profile_id;
@@ -43,7 +43,7 @@ public class Forum {
         this.date_time = date_time;
     }
 
-    public String getUuid() {
+    public int getUuid() {
         return uuid;
     }
 
@@ -81,7 +81,7 @@ public class Forum {
         return date_time;
     }
 
-    public void setUuid(String uuid) {
+    public void setUuid(int uuid) {
         this.uuid = uuid;
     }
 

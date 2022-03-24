@@ -9,7 +9,7 @@ import javax.persistence.*;
 public class OtherQuery {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private String uuid;
+    private int uuid;
     @Column
     private String title;
     @Column
@@ -28,7 +28,7 @@ public class OtherQuery {
     public OtherQuery () {
 
     }
-    public OtherQuery(String uuid, String title, int profile_id, String description,String status,String receiver_email_id,String date_time, String category) {
+    public OtherQuery(int uuid, String title, int profile_id, String description, String status, String receiver_email_id, String date_time, String category) {
         this.uuid = uuid;
         this.title=title;
         this.profile_id=profile_id;
@@ -39,7 +39,7 @@ public class OtherQuery {
         this.category =category;
     }
 
-    public String getUuid() {
+    public int getUuid() {
         return uuid;
     }
     public String getTitle() {
@@ -77,7 +77,7 @@ public class OtherQuery {
     }
 
 
-    public void setUuid(String uuid) {
+    public void setUuid(int uuid) {
         this.uuid= uuid;
     }
 

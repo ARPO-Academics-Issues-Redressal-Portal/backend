@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import java.util.List;
 import java.util.NoSuchElementException;
 
-public interface PrivateQueryRepo extends JpaRepository<PrivateQuery, String> {
+public interface PrivateQueryRepo extends JpaRepository<PrivateQuery, Integer> {
     @Query(value = "select * from privateQuery p where p.profile_id = ?1 and p.course=?2",
             nativeQuery = true)
     public List<PrivateQuery> findQueries(Integer profile_id, String course);

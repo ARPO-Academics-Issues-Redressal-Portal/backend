@@ -21,7 +21,7 @@ public class ForumResponseController {
     }
 
     @GetMapping("/{uuid}")
-    public ResponseEntity<ForumResponse> get(@PathVariable String uuid){
+    public ResponseEntity<ForumResponse> get(@PathVariable int uuid){
         try {
             ForumResponse forumResponse = forumResponseService.getForumResponse(uuid);
             return new ResponseEntity<ForumResponse>(forumResponse, HttpStatus.OK);
@@ -36,7 +36,7 @@ public class ForumResponseController {
     }
 
     @PutMapping("update/{uuid}")
-    public ResponseEntity<?> update(@RequestBody ForumResponse forumResponse, @PathVariable String uuid){
+    public ResponseEntity<?> update(@RequestBody ForumResponse forumResponse, @PathVariable int uuid){
         try {
             ForumResponse existForumResponse = forumResponseService.getForumResponse(uuid);
             forumResponse.setUuid(uuid);
@@ -48,12 +48,12 @@ public class ForumResponseController {
     }
 
     @DeleteMapping("delete/{uuid}")
-    public void delete(@PathVariable String uuid) {
+    public void delete(@PathVariable int uuid) {
         forumResponseService.deleteForumResponse(uuid);
     }
 
     @GetMapping("/forumResponseByForumUUID")
-    public ResponseEntity<?> getForum(@RequestParam String forumUuid){
+    public ResponseEntity<?> getForum(@RequestParam int forumUuid){
         try{
             List<ForumResponse> forumResponses = forumResponseService.forumResponseByForumUUID(forumUuid);
             return new ResponseEntity<List<ForumResponse>>(forumResponses, HttpStatus.OK);

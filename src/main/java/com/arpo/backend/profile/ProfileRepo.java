@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 
-public interface ProfileRepo extends JpaRepository<Profile, String> {
+public interface ProfileRepo extends JpaRepository<Profile, Integer> {
     @Query(value = "select * from profile p where p.profile_id = ?1",
             nativeQuery = true)
     public Profile profileByProfileID(Integer profile_id);

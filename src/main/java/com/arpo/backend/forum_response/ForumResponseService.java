@@ -21,15 +21,15 @@ public class ForumResponseService {
         forumResponseRepo.save(forumResponse);
     }
 
-    public ForumResponse getForumResponse(String uuid){
+    public ForumResponse getForumResponse(int uuid){
         return forumResponseRepo.findById(uuid).get();
     }
 
-    public void deleteForumResponse(String uuid){
+    public void deleteForumResponse(int uuid){
         forumResponseRepo.deleteById(uuid);
     }
 
-    public List<ForumResponse> forumResponseByForumUUID(String forum_uuid){
+    public List<ForumResponse> forumResponseByForumUUID(int forum_uuid){
         return forumResponseRepo.forumResponseByForumUUID(forum_uuid);
     }
 }

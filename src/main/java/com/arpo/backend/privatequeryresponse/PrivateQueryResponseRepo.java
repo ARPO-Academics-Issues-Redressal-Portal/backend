@@ -5,8 +5,8 @@ import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 
-public interface PrivateQueryResponseRepo extends JpaRepository<PrivateQueryResponse, String> {
+public interface PrivateQueryResponseRepo extends JpaRepository<PrivateQueryResponse, Integer> {
     @Query(value = "select * from privateQueryResponse p where p.query_uuid = ?1",
             nativeQuery = true)
-    public List<PrivateQueryResponse> queryResponseByQueryUUID(String query_uuid);
+    public List<PrivateQueryResponse> queryResponseByQueryUUID(int query_uuid);
 }

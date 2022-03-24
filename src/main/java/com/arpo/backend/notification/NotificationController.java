@@ -1,8 +1,5 @@
 package com.arpo.backend.notification;
 
-import com.arpo.backend.notification.Notification;
-import com.arpo.backend.notification.NotificationService;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -24,7 +21,7 @@ public class NotificationController {
     }
 
     @GetMapping("/{uuid}")
-    public ResponseEntity<Notification> get(@PathVariable String uuid){
+    public ResponseEntity<Notification> get(@PathVariable int uuid){
         try {
             Notification notification = notificationService.getNotification(uuid);
             return new ResponseEntity<Notification>(notification, HttpStatus.OK);
@@ -39,7 +36,7 @@ public class NotificationController {
     }
 
     @PutMapping("update/{uuid}")
-    public ResponseEntity<?> update(@RequestBody Notification notification, @PathVariable String uuid){
+    public ResponseEntity<?> update(@RequestBody Notification notification, @PathVariable int uuid){
         try {
             Notification existNotification = notificationService.getNotification(uuid);
             notification.setUuid(uuid);
@@ -51,7 +48,7 @@ public class NotificationController {
     }
 
     @DeleteMapping("delete/{uuid}")
-    public void delete(@PathVariable String uuid) {
+    public void delete(@PathVariable int uuid) {
         notificationService.deleteNotification(uuid);
     }
 }

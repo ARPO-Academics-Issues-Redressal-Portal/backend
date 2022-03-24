@@ -21,7 +21,7 @@ public class CourseRoleController {
     }
 
     @GetMapping("/{uuid}")
-    public ResponseEntity<CourseRole> get(@PathVariable String uuid){
+    public ResponseEntity<CourseRole> get(@PathVariable int uuid){
         try {
             CourseRole courseRole = courseRoleService.getCourseRole(uuid);
             return new ResponseEntity<CourseRole>(courseRole, HttpStatus.OK);
@@ -36,7 +36,7 @@ public class CourseRoleController {
     }
 
     @PutMapping("/update/{uuid}")
-    public ResponseEntity<?> update(@RequestBody CourseRole courseRole, @PathVariable String uuid){
+    public ResponseEntity<?> update(@RequestBody CourseRole courseRole, @PathVariable int uuid){
         try {
             CourseRole existCourseRole = courseRoleService.getCourseRole(uuid);
             courseRole.setUuid(uuid);
@@ -48,7 +48,7 @@ public class CourseRoleController {
     }
 
     @DeleteMapping("/delete/{uuid}")
-    public void delete(@PathVariable String uuid) {
+    public void delete(@PathVariable int uuid) {
         courseRoleService.deleteCourseRole(uuid);
     }
 

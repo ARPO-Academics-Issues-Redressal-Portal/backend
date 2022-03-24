@@ -9,7 +9,7 @@ import javax.persistence.*;
 public class PrivateQuery {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private String uuid;
+    private int uuid;
     @Column
     private String title;
     @Column
@@ -30,7 +30,7 @@ public class PrivateQuery {
     public PrivateQuery () {
 
     }
-    public PrivateQuery(String uuid, String title, int profile_id, String description,String course,String status,String receiver_email_id,String date_time, String category) {
+    public PrivateQuery(int uuid, String title, int profile_id, String description, String course, String status, String receiver_email_id, String date_time, String category) {
         this.uuid = uuid;
         this.title=title;
         this.profile_id=profile_id;
@@ -42,7 +42,7 @@ public class PrivateQuery {
         this.category=category;
     }
 
-    public String getUuid() {
+    public int getUuid() {
         return uuid;
     }
     public String getTitle() {
@@ -84,7 +84,7 @@ public class PrivateQuery {
     }
 
 
-    public void setUuid(String uuid) {
+    public void setUuid(int uuid) {
         this.uuid= uuid;
     }
 

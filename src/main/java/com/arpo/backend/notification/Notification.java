@@ -8,7 +8,7 @@ import javax.persistence.*;
 public class Notification {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private String uuid;
+    private int uuid;
     @Column
     private String heading;
     @Column
@@ -19,14 +19,14 @@ public class Notification {
     public Notification () {
 
     }
-    public Notification (String uuid, String heading, String description, String receiver_email_id) {
+    public Notification (int uuid, String heading, String description, String receiver_email_id) {
         this.uuid = uuid;
         this.heading = heading;
         this.description = description;
         this.receiver_email_id = receiver_email_id;
     }
 
-    public String getUuid() {
+    public int getUuid() {
         return uuid;
     }
     public String getDescription() {
@@ -41,7 +41,7 @@ public class Notification {
         return receiver_email_id;
     }
 
-    public void setUuid(String uuid) {
+    public void setUuid(int uuid) {
         this.uuid = uuid;
     }
 

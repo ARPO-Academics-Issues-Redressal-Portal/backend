@@ -1,9 +1,5 @@
 package com.arpo.backend.announcement;
 
-import com.arpo.backend.announcement.Announcement;
-import com.arpo.backend.announcement.AnnouncementService;
-
-import com.arpo.backend.course_role.CourseRole;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,11 +7,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.NoSuchElementException;
-import org.springframework.core.convert.converter.Converter;
-import org.springframework.lang.NonNull;
-import org.springframework.stereotype.Component;
-
-import java.util.UUID;
 
 @RestController
 @RequestMapping("/announcement")
@@ -29,7 +20,7 @@ public class AnnouncementController {
     }
 
     @GetMapping("/{uuid}")
-    public ResponseEntity<Announcement> get(@PathVariable String uuid){
+    public ResponseEntity<Announcement> get(@PathVariable int uuid){
         try {
             Announcement announcement = announcementService.getAnnouncement(uuid);
             return new ResponseEntity<Announcement>(announcement, HttpStatus.OK);
@@ -44,7 +35,7 @@ public class AnnouncementController {
     }
 
     @PutMapping("/update/{uuid}")
-    public ResponseEntity<?> update(@RequestBody Announcement announcement, @PathVariable String uuid){
+    public ResponseEntity<?> update(@RequestBody Announcement announcement, @PathVariable int uuid){
         try {
             Announcement gotAnnouncement = announcementService.getAnnouncement(uuid);
             gotAnnouncement.setUuid(uuid);
@@ -56,7 +47,7 @@ public class AnnouncementController {
     }
 
     @DeleteMapping("/delete/{uuid}")
-    public void delete(@PathVariable String uuid) {
+    public void delete(@PathVariable int uuid) {
         announcementService.deleteAnnouncement(uuid);
     }
 

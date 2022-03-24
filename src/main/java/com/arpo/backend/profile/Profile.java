@@ -8,7 +8,7 @@ import javax.persistence.*;
 public class Profile {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private String uuid;
+    private int uuid;
     @Column
     private String login_id;
     @Column
@@ -30,7 +30,7 @@ public class Profile {
     public Profile () {
 
     }
-    public Profile (String uuid, String login_id, String password, int profile_id, String phone_no, String email_id, String name, String department, String roll_number) {
+    public Profile (int uuid, String login_id, String password, int profile_id, String phone_no, String email_id, String name, String department, String roll_number) {
         this.uuid = uuid;
         this.login_id = login_id;
         this.password = password;
@@ -42,7 +42,7 @@ public class Profile {
         this.roll_number = roll_number;
     }
 
-    public String getUuid() {
+    public int getUuid() {
         return uuid;
     }
 
@@ -78,7 +78,7 @@ public class Profile {
         return roll_number;
     }
 
-    public void setUuid(String uuid) {
+    public void setUuid(int uuid) {
         this.uuid = uuid;
     }
 

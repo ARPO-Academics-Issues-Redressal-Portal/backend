@@ -9,9 +9,9 @@ import javax.persistence.*;
 public class ForumResponse {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private String uuid;
+    private int uuid;
     @Column
-    private String forum_uuid;
+    private int forum_uuid;
     @Column
     private String responder_email_id;
     @Column
@@ -30,7 +30,7 @@ public class ForumResponse {
     public ForumResponse () {
 
     }
-    public ForumResponse (String uuid, String forum_uuid, String responder_email_id, String response_text, String course, int likes, boolean post_anonymous, String date_time, String receiver_email_id) {
+    public ForumResponse (int uuid, int forum_uuid, String responder_email_id, String response_text, String course, int likes, boolean post_anonymous, String date_time, String receiver_email_id) {
         this.uuid = uuid;
         this.forum_uuid = forum_uuid;
         this.responder_email_id = responder_email_id;
@@ -42,11 +42,11 @@ public class ForumResponse {
         this.receiver_email_id = receiver_email_id;
     }
 
-    public String getUuid() {
+    public int getUuid() {
         return uuid;
     }
 
-    public String getForum_uuid() {
+    public int getForum_uuid() {
         return forum_uuid;
     }
 
@@ -78,11 +78,11 @@ public class ForumResponse {
         return receiver_email_id;
     }
 
-    public void setUuid(String uuid) {
+    public void setUuid(int uuid) {
         this.uuid = uuid;
     }
 
-    public void setForum_uuid(String forum_uuid) {
+    public void setForum_uuid(int forum_uuid) {
         this.forum_uuid = forum_uuid;
     }
 

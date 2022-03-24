@@ -53,8 +53,8 @@ public class PrivateQueryResponseController {
         privateQueryResponseService.deletePrivateQueryResponse(uuid);
     }
 
-    @GetMapping("/queryResponses/{queryUuid}")
-    public ResponseEntity<?> getResponses(@PathVariable String queryUuid){
+    @GetMapping("/privateQueryResponseByQueryUUID")
+    public ResponseEntity<?> getResponses(@RequestParam String queryUuid){
         try{
             List<PrivateQueryResponse> queryResponses = privateQueryResponseService.queryResponseByQueryUUID(queryUuid);
             return new ResponseEntity<List<PrivateQueryResponse>>(queryResponses, HttpStatus.OK);

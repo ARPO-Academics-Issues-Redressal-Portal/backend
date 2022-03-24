@@ -56,10 +56,10 @@ public class ForumController {
         forumService.deleteForum(uuid);
     }
 
-    @GetMapping("/forums/{course}")
-    public ResponseEntity<?> getForum(@PathVariable String course){
+    @GetMapping("/forumByCourse")
+    public ResponseEntity<?> getForum(@RequestParam String courseName){
         try{
-            List<Forum> forums = forumService.forumByCourse(course);
+            List<Forum> forums = forumService.forumByCourse(courseName);
             return new ResponseEntity<List<Forum>>(forums, HttpStatus.OK);
         } catch (NoSuchElementException e){
             return new ResponseEntity<Forum>(HttpStatus.NOT_FOUND);

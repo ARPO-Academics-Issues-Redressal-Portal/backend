@@ -54,10 +54,21 @@ public class PrivateQueryController {
     }
 
     @GetMapping("queryByProfileIdAndCourse")
-    public ResponseEntity<?> findQueries(@RequestParam Integer profile_id, @RequestParam String course)
+    public ResponseEntity<?> findQueries(@RequestParam Integer profile_id, @RequestParam String courseName)
     {
         try{
-            List<PrivateQuery> query = privateQueryService.findQueries(profile_id,course);
+            List<PrivateQuery> query = privateQueryService.findQueries(profile_id,courseName);
+            return new ResponseEntity<List<PrivateQuery>>(query, HttpStatus.OK);
+        } catch (NoSuchElementException e){
+            return new ResponseEntity<PrivateQuery>(HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @GetMapping("queryByCourse")
+    public ResponseEntity<?> findQueriesByCourse(@RequestParam String courseName)
+    {
+        try{
+            List<PrivateQuery> query = privateQueryService.findQueriesByCourse(courseName);
             return new ResponseEntity<List<PrivateQuery>>(query, HttpStatus.OK);
         } catch (NoSuchElementException e){
             return new ResponseEntity<PrivateQuery>(HttpStatus.NOT_FOUND);

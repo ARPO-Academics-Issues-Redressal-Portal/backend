@@ -53,8 +53,8 @@ public class ForumResponseController {
         forumResponseService.deleteForumResponse(uuid);
     }
 
-    @GetMapping("/forumResponses/{forumUuid}")
-    public ResponseEntity<?> getForum(@PathVariable String forumUuid){
+    @GetMapping("/forumResponseByForumUUID")
+    public ResponseEntity<?> getForum(@RequestParam String forumUuid){
         try{
             List<ForumResponse> forumResponses = forumResponseService.forumResponseByForumUUID(forumUuid);
             return new ResponseEntity<List<ForumResponse>>(forumResponses, HttpStatus.OK);

@@ -33,4 +33,7 @@ public class PrivateQueryService{
     public List<PrivateQuery> findQueries(Integer profile_id, String course){
         return privateQueryRepo.findQueries(profile_id,course);
     }
+    public List<PrivateQuery> findQueriesByCourse(String course){
+        return privateQueryRepo.findQueriesByCourse(course);
+    }
 }

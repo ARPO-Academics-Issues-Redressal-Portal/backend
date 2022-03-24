@@ -30,7 +30,7 @@ public class CourseRoleController {
         }
     }
 
-    @PostMapping("/")
+    @PostMapping("/add")
     public void add(@RequestBody CourseRole courseRole){
         courseRoleService.saveCourseRole(courseRole);
     }

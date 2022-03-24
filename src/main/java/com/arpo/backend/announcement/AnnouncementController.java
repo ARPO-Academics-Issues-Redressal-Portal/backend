@@ -38,12 +38,12 @@ public class AnnouncementController {
         }
     }
 
-    @PostMapping("/")
+    @PostMapping("/add")
     public void add(@RequestBody Announcement announcement){
         announcementService.saveAnnouncement(announcement);
     }
 
-    @PutMapping("/{uuid}")
+    @PutMapping("/update/{uuid}")
     public ResponseEntity<?> update(@RequestBody Announcement announcement, @PathVariable String uuid){
         try {
             Announcement gotAnnouncement = announcementService.getAnnouncement(uuid);
@@ -55,7 +55,7 @@ public class AnnouncementController {
         }
     }
 
-    @DeleteMapping("/{uuid}")
+    @DeleteMapping("/delete/{uuid}")
     public void delete(@PathVariable String uuid) {
         announcementService.deleteAnnouncement(uuid);
     }

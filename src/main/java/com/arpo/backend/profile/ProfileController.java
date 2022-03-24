@@ -35,12 +35,12 @@ public class ProfileController {
         }
     }
 
-    @PostMapping("/")
+    @PostMapping("add/")
     public void add(@RequestBody Profile profile){
         profileService.saveProfile(profile);
     }
 
-    @PutMapping("/{uuid}")
+    @PutMapping("update/{uuid}")
     public ResponseEntity<?> update(@RequestBody Profile profile, @PathVariable String uuid){
         try {
             Profile existProfile = profileService.getProfile(uuid);
@@ -52,6 +52,11 @@ public class ProfileController {
         }
     }
 
+    @DeleteMapping("delete/{uuid}")
+    public void delete(@PathVariable String uuid) {
+        profileService.deleteProfile(uuid);
+    }
+
     @GetMapping("profileByLoginAndPassword")
     public ResponseEntity<?> findProfileID(@RequestParam String login_id, @RequestParam String password)
     {
@@ -61,11 +66,6 @@ public class ProfileController {
         } catch (NoSuchElementException e){
             return new ResponseEntity<Profile>( HttpStatus.NOT_FOUND);
         }
-    }
-
-    @DeleteMapping("/{uuid}")
-    public void delete(@PathVariable String uuid) {
-        profileService.deleteProfile(uuid);
     }
 
     @GetMapping("/profiles/{profile_id}")

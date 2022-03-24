@@ -33,12 +33,12 @@ public class NotificationController {
         }
     }
 
-    @PostMapping("/")
+    @PostMapping("add/")
     public void add(@RequestBody Notification notification){
         notificationService.saveNotification(notification);
     }
 
-    @PutMapping("/{uuid}")
+    @PutMapping("update/{uuid}")
     public ResponseEntity<?> update(@RequestBody Notification notification, @PathVariable String uuid){
         try {
             Notification existNotification = notificationService.getNotification(uuid);
@@ -50,7 +50,7 @@ public class NotificationController {
         }
     }
 
-    @DeleteMapping("/{uuid}")
+    @DeleteMapping("delete/{uuid}")
     public void delete(@PathVariable String uuid) {
         notificationService.deleteNotification(uuid);
     }

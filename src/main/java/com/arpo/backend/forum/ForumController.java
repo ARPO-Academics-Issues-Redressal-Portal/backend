@@ -34,12 +34,12 @@ public class ForumController {
         }
     }
 
-    @PostMapping("/")
+    @PostMapping("add/")
     public void add(@RequestBody Forum forum){
         forumService.saveForum(forum);
     }
 
-    @PutMapping("/{uuid}")
+    @PutMapping("update/{uuid}")
     public ResponseEntity<?> update(@RequestBody Forum forum, @PathVariable String uuid){
         try {
             Forum existForum = forumService.getForum(uuid);
@@ -51,7 +51,7 @@ public class ForumController {
         }
     }
 
-    @DeleteMapping("/{uuid}")
+    @DeleteMapping("delete/{uuid}")
     public void delete(@PathVariable String uuid) {
         forumService.deleteForum(uuid);
     }

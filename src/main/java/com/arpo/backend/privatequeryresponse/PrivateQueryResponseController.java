@@ -30,12 +30,12 @@ public class PrivateQueryResponseController {
         }
     }
 
-    @PostMapping("/")
+    @PostMapping("add/")
     public void add(@RequestBody PrivateQueryResponse privateQueryResponse){
         privateQueryResponseService.savePrivateQueryResponse(privateQueryResponse);
     }
 
-    @PutMapping("/{uuid}")
+    @PutMapping("update/{uuid}")
     public ResponseEntity<?> update(@RequestBody PrivateQueryResponse privateQueryResponse, @PathVariable String uuid){
         try {
             PrivateQueryResponse existPrivateQueryResponse = privateQueryResponseService.getPrivateQueryResponse(uuid);
@@ -47,7 +47,7 @@ public class PrivateQueryResponseController {
         }
     }
 
-    @DeleteMapping("/{uuid}")
+    @DeleteMapping("delete/{uuid}")
     public void delete(@PathVariable String uuid) {
         privateQueryResponseService.deletePrivateQueryResponse(uuid);
     }

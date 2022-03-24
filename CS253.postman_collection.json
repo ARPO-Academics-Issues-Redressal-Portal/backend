@@ -39,7 +39,18 @@
 			"name": "all notifications",
 			"request": {
 				"method": "GET",
-				"header": []
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/notification",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"notification"
+					]
+				}
 			},
 			"response": []
 		},
@@ -47,7 +58,25 @@
 			"name": "courses by profile id",
 			"request": {
 				"method": "GET",
-				"header": []
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/courseRoles/coursesByProfile_Id?profile_id=123",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"courseRoles",
+						"coursesByProfile_Id"
+					],
+					"query": [
+						{
+							"key": "profile_id",
+							"value": "123"
+						}
+					]
+				}
 			},
 			"response": []
 		},
@@ -55,7 +84,25 @@
 			"name": "course wise announcements",
 			"request": {
 				"method": "GET",
-				"header": []
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/announcement/courses?courseName=CS253A",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"announcement",
+						"courses"
+					],
+					"query": [
+						{
+							"key": "courseName",
+							"value": "CS253A"
+						}
+					]
+				}
 			},
 			"response": []
 		},
@@ -63,7 +110,25 @@
 			"name": "forums by course",
 			"request": {
 				"method": "GET",
-				"header": []
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/forum/forumByCourse?courseName=CS253A",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"forum",
+						"forumByCourse"
+					],
+					"query": [
+						{
+							"key": "courseName",
+							"value": "CS253A"
+						}
+					]
+				}
 			},
 			"response": []
 		},
@@ -71,7 +136,25 @@
 			"name": "forum response by forum uuid",
 			"request": {
 				"method": "GET",
-				"header": []
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/forumResponse/forumResponseByForumUUID?forumUuid=",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"forumResponse",
+						"forumResponseByForumUUID"
+					],
+					"query": [
+						{
+							"key": "forumUuid",
+							"value": ""
+						}
+					]
+				}
 			},
 			"response": []
 		},
@@ -79,7 +162,29 @@
 			"name": "private queries by profile id and course",
 			"request": {
 				"method": "GET",
-				"header": []
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/courseRoles/queryByProfileIdAndCourse?profile_id=123&courseName=CS253A",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"courseRoles",
+						"queryByProfileIdAndCourse"
+					],
+					"query": [
+						{
+							"key": "profile_id",
+							"value": "123"
+						},
+						{
+							"key": "courseName",
+							"value": "CS253A"
+						}
+					]
+				}
 			},
 			"response": []
 		},
@@ -87,7 +192,25 @@
 			"name": "private queries by courseName",
 			"request": {
 				"method": "GET",
-				"header": []
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/courseRoles/queryByCourse?courseName=CS253A",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"courseRoles",
+						"queryByCourse"
+					],
+					"query": [
+						{
+							"key": "courseName",
+							"value": "CS253A"
+						}
+					]
+				}
 			},
 			"response": []
 		},
@@ -95,7 +218,25 @@
 			"name": "private query response by query uuid",
 			"request": {
 				"method": "GET",
-				"header": []
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/privateQueryResponse/privateQueryResponseByQueryUUID?queryUuid",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"privateQueryResponse",
+						"privateQueryResponseByQueryUUID"
+					],
+					"query": [
+						{
+							"key": "queryUuid",
+							"value": null
+						}
+					]
+				}
 			},
 			"response": []
 		},

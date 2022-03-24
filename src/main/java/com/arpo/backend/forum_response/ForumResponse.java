@@ -1,4 +1,4 @@
-package com.arpo.backend.forumresponse;
+package com.arpo.backend.forum_response;
 
 
 import javax.persistence.*;

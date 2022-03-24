@@ -52,7 +52,7 @@ public class ProfileController {
         }
     }
 
-    @GetMapping("profileByloginAndPassword")
+    @GetMapping("profileByLoginAndPassword")
     public ResponseEntity<?> findProfileID(@RequestParam String login_id, @RequestParam String password)
     {
         try{

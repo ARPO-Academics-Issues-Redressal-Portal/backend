@@ -8,7 +8,7 @@ import javax.persistence.*;
 @Table (name = "course_role")
 public class CourseRole {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int uuid;
     @Column(name = "course")
     private String course;

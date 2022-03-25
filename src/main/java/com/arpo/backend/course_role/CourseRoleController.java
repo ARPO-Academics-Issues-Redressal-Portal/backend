@@ -1,6 +1,6 @@
 package com.arpo.backend.course_role;
 
-import com.arpo.backend.APIErrors;
+import com.arpo.backend.APIResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,8 +16,6 @@ public class CourseRoleController {
     @Autowired
     CourseRoleService courseRoleService;
 
-    APIErrors apiErrors;
-
     @GetMapping("")
     public List<CourseRole> list(){
         return courseRoleService.listAllCourseRoles();
@@ -28,11 +26,11 @@ public class CourseRoleController {
         try {
             CourseRole courseRole = courseRoleService.getCourseRole(uuid);
             if(Objects.isNull(courseRole)){
-                throw new NoSuchElementException(apiErrors.ELEMENT_NOT_FOUND);
+                throw new NoSuchElementException();
             }
             return new ResponseEntity<CourseRole>(courseRole, HttpStatus.OK);
         } catch (NoSuchElementException e) {
-            return new ResponseEntity(e.getMessage(),HttpStatus.BAD_REQUEST);
+            return new ResponseEntity(APIResponses.ELEMENT_NOT_FOUND,HttpStatus.BAD_REQUEST);
         }
     }
 
@@ -42,13 +40,13 @@ public class CourseRoleController {
             try {
                 courseRoleService.saveCourseRole(courseRole);
             } catch (Exception e) {
-                throw new Exception(apiErrors.BAD_REQUEST_BODY);
+                throw new Exception();
             }
         }
         catch (Exception e){
-            return new ResponseEntity(e.getMessage(),HttpStatus.BAD_REQUEST);
+            return new ResponseEntity(APIResponses.BAD_REQUEST_BODY,HttpStatus.BAD_REQUEST);
         }
-        return new ResponseEntity("Course Role Added", HttpStatus.OK);
+        return new ResponseEntity(APIResponses.ELEMENT_ADDED, HttpStatus.OK);
     }
 
     @PutMapping("/update/{uuid}")
@@ -57,11 +55,11 @@ public class CourseRoleController {
         try {
             existCourseRole = courseRoleService.getCourseRole(uuid);
             if(Objects.isNull(existCourseRole)){
-                throw new NoSuchElementException(apiErrors.ELEMENT_NOT_FOUND);
+                throw new NoSuchElementException();
             }
         }
         catch (NoSuchElementException e){
-            return new ResponseEntity(e.getMessage(),HttpStatus.BAD_REQUEST);
+            return new ResponseEntity(APIResponses.ELEMENT_NOT_FOUND,HttpStatus.BAD_REQUEST);
         }
         try {
             courseRole.setUuid(uuid);
@@ -69,7 +67,7 @@ public class CourseRoleController {
             return new ResponseEntity(courseRole,HttpStatus.OK);
         }
         catch (Exception e){
-            return new ResponseEntity(e.getMessage(), HttpStatus.BAD_REQUEST);
+            return new ResponseEntity(APIResponses.BAD_REQUEST_BODY, HttpStatus.BAD_REQUEST);
         }
 
     }
@@ -80,9 +78,9 @@ public class CourseRoleController {
             courseRoleService.deleteCourseRole(uuid);
         }
         catch (Exception e) {
-            return new ResponseEntity(apiErrors.ELEMENT_NOT_DELETED, HttpStatus.BAD_REQUEST);
+            return new ResponseEntity(APIResponses.ELEMENT_NOT_DELETED, HttpStatus.BAD_REQUEST);
         }
-        return new ResponseEntity("Element Deleted", HttpStatus.OK);
+        return new ResponseEntity(APIResponses.ELEMENT_DELETED, HttpStatus.OK);
     }
 
     @GetMapping("/roles")
@@ -90,11 +88,11 @@ public class CourseRoleController {
         try{
             List<CourseRole> courseRoles = courseRoleService.findByRole(role);
             if(courseRoles.isEmpty()){
-                throw new NoSuchElementException(apiErrors.ELEMENT_NOT_FOUND);
+                throw new NoSuchElementException();
             }
             return new ResponseEntity<List<CourseRole>>(courseRoles, HttpStatus.OK);
         } catch (NoSuchElementException e){
-            return new ResponseEntity(e.getMessage(), HttpStatus.BAD_REQUEST);
+            return new ResponseEntity(APIResponses.ELEMENT_NOT_FOUND, HttpStatus.BAD_REQUEST);
         }
     }
 
@@ -103,11 +101,11 @@ public class CourseRoleController {
         try{
             List<CourseRole> courseRoles = courseRoleService.findByCourse(course);
             if(courseRoles.isEmpty()){
-                throw new NoSuchElementException(apiErrors.ELEMENT_NOT_FOUND);
+                throw new NoSuchElementException();
             }
             return new ResponseEntity<List<CourseRole>>(courseRoles, HttpStatus.OK);
         } catch (NoSuchElementException e){
-            return new ResponseEntity(e.getMessage(),HttpStatus.BAD_REQUEST);
+            return new ResponseEntity(APIResponses.ELEMENT_DELETED,HttpStatus.BAD_REQUEST);
         }
     }
 
@@ -116,11 +114,11 @@ public class CourseRoleController {
         try{
             List<CourseRole> courseRoles = courseRoleService.getCourseByProfile_id(profile_id);
             if(courseRoles.isEmpty()){
-                throw new NoSuchElementException(apiErrors.ELEMENT_NOT_FOUND);
+                throw new NoSuchElementException();
             }
             return new ResponseEntity<List<CourseRole>>(courseRoles, HttpStatus.OK);
         } catch (NoSuchElementException e){
-            return new ResponseEntity(e.getMessage(),HttpStatus.BAD_REQUEST);
+            return new ResponseEntity(APIResponses.ELEMENT_NOT_FOUND,HttpStatus.BAD_REQUEST);
         }
     }
 }

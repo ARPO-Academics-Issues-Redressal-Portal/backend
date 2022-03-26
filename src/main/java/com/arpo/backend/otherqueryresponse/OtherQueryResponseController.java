@@ -1,10 +1,12 @@
 package com.arpo.backend.otherqueryresponse;
 
+import com.arpo.backend.APIResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Objects;
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -24,6 +26,9 @@ public class OtherQueryResponseController {
     public ResponseEntity<OtherQueryResponse> get(@PathVariable int uuid){
         try {
             OtherQueryResponse otherQueryResponse = otherQueryResponseService.getOtherQueryResponse(uuid);
+            if(Objects.isNull(otherQueryResponse)){
+                throw new NoSuchElementException();
+            }
             return new ResponseEntity<OtherQueryResponse>(otherQueryResponse, HttpStatus.OK);
         } catch (NoSuchElementException e) {
             return new ResponseEntity<OtherQueryResponse>(HttpStatus.NOT_FOUND);
@@ -31,26 +36,51 @@ public class OtherQueryResponseController {
     }
 
     @PostMapping("add/")
-    public void add(@RequestBody OtherQueryResponse otherQueryResponse){
-        otherQueryResponseService.saveOtherQueryResponse(otherQueryResponse);
+    public ResponseEntity add(@RequestBody OtherQueryResponse otherQueryResponse){
+        try {
+            try {
+                otherQueryResponseService.saveOtherQueryResponse(otherQueryResponse);
+            } catch (Exception e) {
+                throw new Exception();
+            }
+        }
+        catch (Exception e){
+            return new ResponseEntity(APIResponses.BAD_REQUEST_BODY,HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity(APIResponses.ELEMENT_ADDED, HttpStatus.OK);
     }
 
     @PutMapping("update/{uuid}")
     public ResponseEntity<?> update(@RequestBody OtherQueryResponse otherQueryResponse, @PathVariable int uuid){
+        OtherQueryResponse existOtherQueryResponse;
         try {
-            OtherQueryResponse existOtherQueryResponse = otherQueryResponseService.getOtherQueryResponse(uuid);
+            existOtherQueryResponse = otherQueryResponseService.getOtherQueryResponse(uuid);
+            if(Objects.isNull(existOtherQueryResponse)){
+                throw new NoSuchElementException();
+            }
+        }
+        catch (NoSuchElementException e){
+            return new ResponseEntity(APIResponses.ELEMENT_NOT_FOUND,HttpStatus.BAD_REQUEST);
+        }
+        try {
             otherQueryResponse.setUuid(uuid);
             otherQueryResponseService.saveOtherQueryResponse(otherQueryResponse);
-            return new ResponseEntity<>(HttpStatus.OK);
-        } catch (NoSuchElementException e){
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity(otherQueryResponse,HttpStatus.OK);
+        }
+        catch (Exception e){
+            return new ResponseEntity(APIResponses.BAD_REQUEST_BODY, HttpStatus.BAD_REQUEST);
         }
     }
 
     @DeleteMapping("delete/{uuid}")
-    public void delete(@PathVariable int uuid) {
-        otherQueryResponseService.deleteOtherQueryResponse(uuid);
+    public ResponseEntity delete(@PathVariable int uuid) {
+        try {
+            otherQueryResponseService.deleteOtherQueryResponse(uuid);
+        }
+        catch (Exception e) {
+            return new ResponseEntity(APIResponses.ELEMENT_NOT_DELETED, HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity(APIResponses.ELEMENT_DELETED, HttpStatus.OK);
     }
-
 
 }

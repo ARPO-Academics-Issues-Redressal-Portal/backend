@@ -25,12 +25,16 @@ public class Profile {
     private String department;
     @Column
     private String roll_number;
+    @Column(name = "is_admin")
+    private Integer isAdmin;
+    @Column(name = "is_ts")
+    private Integer isTS;
 
 
     public Profile () {
 
     }
-    public Profile (int uuid, String login_id, String password, int profile_id, String phone_no, String email_id, String name, String department, String roll_number) {
+    public Profile (int uuid, String login_id, String password, int profile_id, String phone_no, String email_id, String name, String department, String roll_number, Integer isAdmin, Integer isTS) {
         this.uuid = uuid;
         this.login_id = login_id;
         this.password = password;
@@ -40,6 +44,8 @@ public class Profile {
         this.name = name;
         this.department = department;
         this.roll_number = roll_number;
+        this.isAdmin = isAdmin;
+        this.isTS = isTS;
     }
 
     public int getUuid() {
@@ -78,6 +84,10 @@ public class Profile {
         return roll_number;
     }
 
+    public Integer getIsAdmin() { return isAdmin; }
+
+    public Integer getIsTS() { return isTS; }
+
     public void setUuid(int uuid) {
         this.uuid = uuid;
     }
@@ -113,4 +123,8 @@ public class Profile {
     public void setRoll_number(String roll_number) {
         this.roll_number = roll_number;
     }
+
+    public void setIsAdmin(int isAdmin) { this.isAdmin = isAdmin; }
+
+    public void setIsTS(int isTS) { this.isTS = isTS; }
 }

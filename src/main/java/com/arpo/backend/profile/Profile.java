@@ -26,9 +26,9 @@ public class Profile {
     @Column
     private String roll_number;
     @Column(name = "is_admin")
-    private Integer isAdmin;
+    private Integer is_admin;
     @Column(name = "is_ts")
-    private Integer isTS;
+    private Integer is_ts;
 
 
     public Profile () {
@@ -44,8 +44,8 @@ public class Profile {
         this.name = name;
         this.department = department;
         this.roll_number = roll_number;
-        this.isAdmin = isAdmin;
-        this.isTS = isTS;
+        this.is_admin = isAdmin;
+        this.is_ts = isTS;
     }
 
     public int getUuid() {
@@ -84,9 +84,9 @@ public class Profile {
         return roll_number;
     }
 
-    public Integer getIsAdmin() { return isAdmin; }
+    public Integer getIsAdmin() { return is_admin; }
 
-    public Integer getIsTS() { return isTS; }
+    public Integer getIs_ts() { return is_ts; }
 
     public void setUuid(int uuid) {
         this.uuid = uuid;
@@ -124,7 +124,7 @@ public class Profile {
         this.roll_number = roll_number;
     }
 
-    public void setIsAdmin(int isAdmin) { this.isAdmin = isAdmin; }
+    public void setIsAdmin(int isAdmin) { this.is_admin = isAdmin; }
 
-    public void setIsTS(int isTS) { this.isTS = isTS; }
+    public void setIs_ts(int is_ts) { this.is_ts = is_ts; }
 }

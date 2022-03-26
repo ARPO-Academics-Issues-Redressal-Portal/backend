@@ -1,4 +1,4 @@
-package com.arpo.backend.otherquery;
+package com.arpo.backend.other_query;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

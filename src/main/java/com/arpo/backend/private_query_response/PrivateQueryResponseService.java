@@ -1,4 +1,4 @@
-package com.arpo.backend.privatequeryresponse;
+package com.arpo.backend.private_query_response;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

@@ -1,4 +1,4 @@
-package com.arpo.backend.otherqueryresponse;
+package com.arpo.backend.other_query_response;
 
 
 import javax.persistence.*;

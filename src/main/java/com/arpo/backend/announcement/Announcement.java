@@ -9,13 +9,13 @@ public class Announcement {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int uuid;
     @Column
-    private String Heading;
+    private String heading;
     @Column
-    private String Description;
+    private String description;
     @Column
-    private int Sender;
+    private int sender;
     @Column
-    private String Course;
+    private String course;
     @Column
     private String date_time;
 
@@ -25,10 +25,10 @@ public class Announcement {
     public Announcement (int uuid, String heading, String description, int sender
             , String course, String date_time) {
         this.uuid = uuid;
-        this.Heading=heading;
-        this.Description=description;
-        this.Course = course;
-        this.Sender = sender;
+        this.heading =heading;
+        this.description =description;
+        this.course = course;
+        this.sender = sender;
         this.date_time= date_time;
     }
 
@@ -37,17 +37,17 @@ public class Announcement {
     }
 
     public String getHeading() {
-        return Heading;
+        return heading;
     }
     public String getDescription() {
-        return Description;
+        return description;
     }
     public int getSender() {
-        return Sender;
+        return sender;
     }
 
     public String getCourse() {
-        return Course;
+        return course;
     }
 
     public String getDate_time() {
@@ -59,18 +59,18 @@ public class Announcement {
     }
 
     public void setHeading(String heading) {
-        this.Heading=heading;
+        this.heading =heading;
     }
     public void setDescription(String description) {
-        this.Description=description;
+        this.description =description;
     }
 
     public void setSender(int sender) {
-        this.Sender = sender;
+        this.sender = sender;
     }
 
     public void setCourse(String course) {
-        this.Course = course;
+        this.course = course;
     }
 
     public void setDate_time(String date_time) {

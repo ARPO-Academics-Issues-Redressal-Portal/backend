@@ -1,4 +1,4 @@
-package com.arpo.backend.privatequeryresponse;
+package com.arpo.backend.private_query_response;
 
 import com.arpo.backend.APIResponses;
 import org.springframework.beans.factory.annotation.Autowired;

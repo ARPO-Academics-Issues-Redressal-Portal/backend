@@ -1,4 +1,4 @@
-package com.arpo.backend.privatequeryresponse;
+package com.arpo.backend.private_query_response;
 
 
 import javax.persistence.*;

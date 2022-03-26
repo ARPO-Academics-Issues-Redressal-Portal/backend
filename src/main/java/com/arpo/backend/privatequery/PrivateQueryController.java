@@ -1,10 +1,12 @@
 package com.arpo.backend.privatequery;
 
+import com.arpo.backend.APIResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Objects;
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -24,6 +26,9 @@ public class PrivateQueryController {
     public ResponseEntity<PrivateQuery> get(@PathVariable int uuid){
         try {
             PrivateQuery privateQuery = privateQueryService.getPrivateQuery(uuid);
+            if(Objects.isNull(privateQuery)){
+                throw new NoSuchElementException();
+            }
             return new ResponseEntity<PrivateQuery>(privateQuery, HttpStatus.OK);
         } catch (NoSuchElementException e) {
             return new ResponseEntity<PrivateQuery>(HttpStatus.NOT_FOUND);
@@ -31,25 +36,52 @@ public class PrivateQueryController {
     }
 
     @PostMapping("add/")
-    public void add(@RequestBody PrivateQuery privateQuery){
-        privateQueryService.savePrivateQuery(privateQuery);
+    public ResponseEntity add(@RequestBody PrivateQuery privateQuery){
+        try {
+            try {
+                privateQueryService.savePrivateQuery(privateQuery);
+            } catch (Exception e) {
+                throw new Exception();
+            }
+        }
+        catch (Exception e){
+            return new ResponseEntity(APIResponses.BAD_REQUEST_BODY,HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity(APIResponses.ELEMENT_ADDED, HttpStatus.OK);
     }
 
     @PutMapping("update/{uuid}")
     public ResponseEntity<?> update(@RequestBody PrivateQuery privateQuery, @PathVariable int uuid){
+        PrivateQuery existPrivateQuery;
         try {
-            PrivateQuery existPrivateQuery = privateQueryService.getPrivateQuery(uuid);
+            existPrivateQuery = privateQueryService.getPrivateQuery(uuid);
+            if(Objects.isNull(existPrivateQuery)){
+                throw new NoSuchElementException();
+            }
+        }
+        catch (NoSuchElementException e){
+            return new ResponseEntity(APIResponses.ELEMENT_NOT_FOUND,HttpStatus.BAD_REQUEST);
+        }
+        try {
             privateQuery.setUuid(uuid);
             privateQueryService.savePrivateQuery(privateQuery);
-            return new ResponseEntity<>(HttpStatus.OK);
-        } catch (NoSuchElementException e){
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity(privateQuery,HttpStatus.OK);
         }
+        catch (Exception e){
+            return new ResponseEntity(APIResponses.BAD_REQUEST_BODY, HttpStatus.BAD_REQUEST);
+        }
+
     }
 
     @DeleteMapping("delete/{uuid}")
-    public void delete(@PathVariable int uuid) {
-        privateQueryService.deletePrivateQuery(uuid);
+    public ResponseEntity delete(@PathVariable int uuid) {
+        try {
+            privateQueryService.deletePrivateQuery(uuid);
+        }
+        catch (Exception e) {
+            return new ResponseEntity(APIResponses.ELEMENT_NOT_DELETED, HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity(APIResponses.ELEMENT_DELETED, HttpStatus.OK);
     }
 
     @GetMapping("queryByProfileIdAndCourse")
@@ -57,6 +89,9 @@ public class PrivateQueryController {
     {
         try{
             List<PrivateQuery> query = privateQueryService.findQueries(profile_id,courseName);
+            if(query.isEmpty()){
+                throw new NoSuchElementException();
+            }
             return new ResponseEntity<List<PrivateQuery>>(query, HttpStatus.OK);
         } catch (NoSuchElementException e){
             return new ResponseEntity<PrivateQuery>(HttpStatus.NOT_FOUND);
@@ -68,6 +103,9 @@ public class PrivateQueryController {
     {
         try{
             List<PrivateQuery> query = privateQueryService.findQueriesByCourse(courseName);
+            if(query.isEmpty()){
+                throw new NoSuchElementException();
+            }
             return new ResponseEntity<List<PrivateQuery>>(query, HttpStatus.OK);
         } catch (NoSuchElementException e){
             return new ResponseEntity<PrivateQuery>(HttpStatus.NOT_FOUND);

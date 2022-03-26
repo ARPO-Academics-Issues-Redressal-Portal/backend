@@ -1,10 +1,12 @@
 package com.arpo.backend.forum_response;
 
+import com.arpo.backend.APIResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Objects;
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -24,6 +26,9 @@ public class ForumResponseController {
     public ResponseEntity<ForumResponse> get(@PathVariable int uuid){
         try {
             ForumResponse forumResponse = forumResponseService.getForumResponse(uuid);
+            if(Objects.isNull(forumResponse)){
+                throw new NoSuchElementException();
+            }
             return new ResponseEntity<ForumResponse>(forumResponse, HttpStatus.OK);
         } catch (NoSuchElementException e) {
             return new ResponseEntity<ForumResponse>(HttpStatus.NOT_FOUND);
@@ -31,31 +36,61 @@ public class ForumResponseController {
     }
 
     @PostMapping("add/")
-    public void add(@RequestBody ForumResponse forumResponse){
-        forumResponseService.saveForumResponse(forumResponse);
+    public ResponseEntity add(@RequestBody ForumResponse forumResponse){
+        try {
+            try {
+                forumResponseService.saveForumResponse(forumResponse);
+            } catch (Exception e) {
+                throw new Exception();
+            }
+        }
+        catch (Exception e){
+            return new ResponseEntity(APIResponses.BAD_REQUEST_BODY,HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity(APIResponses.ELEMENT_ADDED, HttpStatus.OK);
     }
 
     @PutMapping("update/{uuid}")
     public ResponseEntity<?> update(@RequestBody ForumResponse forumResponse, @PathVariable int uuid){
+        ForumResponse existforumResponse;
         try {
-            ForumResponse existForumResponse = forumResponseService.getForumResponse(uuid);
+            existforumResponse = forumResponseService.getForumResponse(uuid);
+            if(Objects.isNull(existforumResponse)){
+                throw new NoSuchElementException();
+            }
+        }
+        catch (NoSuchElementException e){
+            return new ResponseEntity(APIResponses.ELEMENT_NOT_FOUND,HttpStatus.BAD_REQUEST);
+        }
+        try {
             forumResponse.setUuid(uuid);
             forumResponseService.saveForumResponse(forumResponse);
-            return new ResponseEntity<>(HttpStatus.OK);
-        } catch (NoSuchElementException e){
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity(forumResponse,HttpStatus.OK);
         }
+        catch (Exception e){
+            return new ResponseEntity(APIResponses.BAD_REQUEST_BODY, HttpStatus.BAD_REQUEST);
+        }
+
     }
 
     @DeleteMapping("delete/{uuid}")
-    public void delete(@PathVariable int uuid) {
-        forumResponseService.deleteForumResponse(uuid);
+    public ResponseEntity delete(@PathVariable int uuid) {
+        try {
+            forumResponseService.deleteForumResponse(uuid);
+        }
+        catch (Exception e) {
+            return new ResponseEntity(APIResponses.ELEMENT_NOT_DELETED, HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity(APIResponses.ELEMENT_DELETED, HttpStatus.OK);
     }
 
     @GetMapping("/forumResponseByForumUUID")
     public ResponseEntity<?> getForum(@RequestParam int forumUuid){
         try{
             List<ForumResponse> forumResponses = forumResponseService.forumResponseByForumUUID(forumUuid);
+            if(forumResponses.isEmpty()){
+                throw new NoSuchElementException();
+            }
             return new ResponseEntity<List<ForumResponse>>(forumResponses, HttpStatus.OK);
         } catch (NoSuchElementException e){
             return new ResponseEntity<ForumResponse>(HttpStatus.NOT_FOUND);

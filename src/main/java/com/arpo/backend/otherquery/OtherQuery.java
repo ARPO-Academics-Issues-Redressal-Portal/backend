@@ -8,7 +8,7 @@ import javax.persistence.*;
 @Table (name = "other_query")
 public class OtherQuery {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int uuid;
     @Column
     private String title;

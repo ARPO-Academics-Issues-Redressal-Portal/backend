@@ -8,7 +8,7 @@ import javax.persistence.*;
 @Table (name = "forum_response")
 public class ForumResponse {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int uuid;
     @Column
     private int forum_uuid;

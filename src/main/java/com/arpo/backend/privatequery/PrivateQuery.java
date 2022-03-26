@@ -8,7 +8,7 @@ import javax.persistence.*;
 @Table (name = "private_query")
 public class PrivateQuery {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int uuid;
     @Column
     private String title;

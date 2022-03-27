@@ -35,7 +35,7 @@ public class PrivateQueryResponseController {
         }
     }
 
-    @PostMapping("add/")
+    @PostMapping("/add")
     public ResponseEntity add(@RequestBody PrivateQueryResponse privateQueryResponse){
         try {
             try {
@@ -50,7 +50,7 @@ public class PrivateQueryResponseController {
         return new ResponseEntity(APIResponses.ELEMENT_ADDED, HttpStatus.OK);
     }
 
-    @PutMapping("update/{uuid}")
+    @PutMapping("/update/{uuid}")
     public ResponseEntity<?> update(@RequestBody PrivateQueryResponse privateQueryResponse, @PathVariable int uuid){
         PrivateQueryResponse existPrivateQueryResponse;
         try {
@@ -73,7 +73,7 @@ public class PrivateQueryResponseController {
 
     }
 
-    @DeleteMapping("delete/{uuid}")
+    @DeleteMapping("/delete/{uuid}")
     public ResponseEntity delete(@PathVariable int uuid) {
         try {
             privateQueryResponseService.deletePrivateQueryResponse(uuid);

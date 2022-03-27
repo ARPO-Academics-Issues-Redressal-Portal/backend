@@ -35,7 +35,7 @@ public class ForumResponseController {
         }
     }
 
-    @PostMapping("add/")
+    @PostMapping("/add")
     public ResponseEntity add(@RequestBody ForumResponse forumResponse){
         try {
             try {
@@ -50,7 +50,7 @@ public class ForumResponseController {
         return new ResponseEntity(APIResponses.ELEMENT_ADDED, HttpStatus.OK);
     }
 
-    @PutMapping("update/{uuid}")
+    @PutMapping("/update/{uuid}")
     public ResponseEntity<?> update(@RequestBody ForumResponse forumResponse, @PathVariable int uuid){
         ForumResponse existforumResponse;
         try {
@@ -73,7 +73,7 @@ public class ForumResponseController {
 
     }
 
-    @DeleteMapping("delete/{uuid}")
+    @DeleteMapping("/delete/{uuid}")
     public ResponseEntity delete(@PathVariable int uuid) {
         try {
             forumResponseService.deleteForumResponse(uuid);

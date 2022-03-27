@@ -35,7 +35,7 @@ public class OtherQueryResponseController {
         }
     }
 
-    @PostMapping("add/")
+    @PostMapping("/add")
     public ResponseEntity add(@RequestBody OtherQueryResponse otherQueryResponse){
         try {
             try {
@@ -50,7 +50,7 @@ public class OtherQueryResponseController {
         return new ResponseEntity(APIResponses.ELEMENT_ADDED, HttpStatus.OK);
     }
 
-    @PutMapping("update/{uuid}")
+    @PutMapping("/update/{uuid}")
     public ResponseEntity<?> update(@RequestBody OtherQueryResponse otherQueryResponse, @PathVariable int uuid){
         OtherQueryResponse existOtherQueryResponse;
         try {
@@ -72,7 +72,7 @@ public class OtherQueryResponseController {
         }
     }
 
-    @DeleteMapping("delete/{uuid}")
+    @DeleteMapping("/delete/{uuid}")
     public ResponseEntity delete(@PathVariable int uuid) {
         try {
             otherQueryResponseService.deleteOtherQueryResponse(uuid);

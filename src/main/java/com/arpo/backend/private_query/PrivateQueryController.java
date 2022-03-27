@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 
+
 @RestController
 @RequestMapping("/privateQuery")
 public class PrivateQueryController {
@@ -35,10 +36,12 @@ public class PrivateQueryController {
         }
     }
 
-    @PostMapping("add/")
+    @PostMapping("/add")
     public ResponseEntity add(@RequestBody PrivateQuery privateQuery){
         try {
             try {
+                System.out.println(privateQuery.getCourse());
+                System.out.println(privateQuery.getTitle());
                 privateQueryService.savePrivateQuery(privateQuery);
             } catch (Exception e) {
                 throw new Exception();
@@ -50,7 +53,8 @@ public class PrivateQueryController {
         return new ResponseEntity(APIResponses.ELEMENT_ADDED, HttpStatus.OK);
     }
 
-    @PutMapping("update/{uuid}")
+
+    @PutMapping("/update/{uuid}")
     public ResponseEntity<?> update(@RequestBody PrivateQuery privateQuery, @PathVariable int uuid){
         PrivateQuery existPrivateQuery;
         try {
@@ -73,7 +77,7 @@ public class PrivateQueryController {
 
     }
 
-    @DeleteMapping("delete/{uuid}")
+    @DeleteMapping("/delete/{uuid}")
     public ResponseEntity delete(@PathVariable int uuid) {
         try {
             privateQueryService.deletePrivateQuery(uuid);
@@ -84,7 +88,7 @@ public class PrivateQueryController {
         return new ResponseEntity(APIResponses.ELEMENT_DELETED, HttpStatus.OK);
     }
 
-    @GetMapping("queryByProfileIdAndCourse")
+    @GetMapping("/queryByProfileIdAndCourse")
     public ResponseEntity<?> findQueries(@RequestParam Integer profile_id, @RequestParam String courseName)
     {
         try{
@@ -98,7 +102,7 @@ public class PrivateQueryController {
         }
     }
 
-    @GetMapping("queryByCourse")
+    @GetMapping("/queryByCourse")
     public ResponseEntity<?> findQueriesByCourse(@RequestParam String courseName)
     {
         try{

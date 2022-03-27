@@ -11,7 +11,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/profile/profileByLoginAndPassword?login_id=urbic&password=urbic",
+					"raw": "http://localhost:8080/profile/profileByLoginAndPassword?login_id=urbic&password=urbi",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -28,7 +28,7 @@
 						},
 						{
 							"key": "password",
-							"value": "urbic"
+							"value": "urbi"
 						}
 					]
 				}
@@ -112,7 +112,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/forum/forumByCourse?courseName=CS253A",
+					"raw": "http://localhost:8080/forum/forumByCourse?courseName=",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -125,7 +125,7 @@
 					"query": [
 						{
 							"key": "courseName",
-							"value": "CS253A"
+							"value": ""
 						}
 					]
 				}
@@ -164,24 +164,29 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/courseRoles/queryByProfileIdAndCourse?profile_id=123&courseName=CS253A",
+					"raw": "http://localhost:8080/privateQuery/queryByProfileIdAndCourse?courseName=CS253A&profile_id=123",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
-						"courseRoles",
+						"privateQuery",
 						"queryByProfileIdAndCourse"
 					],
 					"query": [
 						{
-							"key": "profile_id",
-							"value": "123"
+							"key": "",
+							"value": "",
+							"disabled": true
 						},
 						{
 							"key": "courseName",
 							"value": "CS253A"
+						},
+						{
+							"key": "profile_id",
+							"value": "123"
 						}
 					]
 				}
@@ -194,14 +199,14 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/courseRoles/queryByCourse?courseName=CS253A",
+					"raw": "http://localhost:8080/privateQuery/queryByCourse?courseName=CS253A",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
-						"courseRoles",
+						"privateQuery",
 						"queryByCourse"
 					],
 					"query": [
@@ -220,7 +225,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/privateQueryResponse/privateQueryResponseByQueryUUID?queryUuid",
+					"raw": "http://localhost:8080/privateQueryResponse/privateQueryResponseByQueryUUID?queryUuid=8000000",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -233,7 +238,7 @@
 					"query": [
 						{
 							"key": "queryUuid",
-							"value": null
+							"value": "8000000"
 						}
 					]
 				}
@@ -247,7 +252,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"uuid\": \"sample_uuid\",\r\n    \"Heading\": \"sample_heading\",\r\n    \"Description\": \"sample_description\",\r\n    \"Sender\": 100,\r\n    \"Course\":\"sample_course\",\r\n    \"date_time\":\"2022-03-24T07:25:28.962+00:00\"\r\n}",
+					"raw": "{\r\n    \"heading\": \"sample_heading\",\r\n    \"description\": \"sample_description\",\r\n    \"sender\": 100,\r\n    \"course\":\"sample_course\",\r\n    \"date_time\":\"2022-03-24T07:25:28.962+00:00\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -276,7 +281,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"uuid\": \"sample_uuid\",\r\n    \"Heading\": \"sample_heading\",\r\n    \"Description\": \"sample_description\",\r\n    \"Sender\": 100,\r\n    \"Course\":\"sample_course\",\r\n    \"date_time\":\"2022-03-24T07:25:28.962+00:00\"\r\n}",
+					"raw": "{\r\n    \"heading\": \"sample_heading\",\r\n    \"description\": \"sample_description\",\r\n    \"sender\": 123,\r\n    \"course\":\"sample_course\",\r\n    \"date_time\":\"2022-03-24T07:25:28.962+00:00\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -284,7 +289,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/announcement/update/{uuid}",
+					"raw": "http://localhost:8080/announcement/update/1000005",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -293,19 +298,19 @@
 					"path": [
 						"announcement",
 						"update",
-						"{uuid}"
+						"1000005"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "delete announcment",
+			"name": "announcement",
 			"request": {
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/announcement/delete/{uuid}",
+					"raw": "http://localhost:8080/announcement/delete/1000004",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -314,7 +319,7 @@
 					"path": [
 						"announcement",
 						"delete",
-						"{uuid}"
+						"1000004"
 					]
 				}
 			},
@@ -327,7 +332,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"uuid\":\"sample_uuid\",\r\n    \"course\":\"sample_course\",\r\n    \"profile_id\":\"sample_profile_id\",\r\n    \"role\":\"sample_role\"\r\n\r\n}",
+					"raw": "{\r\n    \"course\":\"sample_course\",\r\n    \"profile_id\":456,\r\n    \"role\":\"sample_role\"\r\n\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -354,6 +359,143 @@
 			"request": {
 				"method": "GET",
 				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "get course roles",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/courseRoles/2000014",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"courseRoles",
+						"2000014"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update existing course role",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"course\":\"sample_course\",\r\n    \"profile_id\":456,\r\n    \"role\":\"sample_role\"\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/courseRoles/update/2000009",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"courseRoles",
+						"update",
+						"2000009"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add private query",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\":\"this is a new private query\",\r\n    \"profile_id\":123, \r\n    \"description\":\"added just now\",\r\n    \"course\":\"CS253A\",\r\n    \"status\":\"W\",\r\n    \"receiver_email_id\":\"isaha@iitk.ac.in\",\r\n    \"date_time\":\"2022-03-24T07:25:28.962+00:00\",\r\n    \"category\":\"Temp\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/privateQuery/add",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"privateQuery",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add forum",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\":\"this is a new private query\",\r\n    \"profile_id\":123, \r\n    \"description\":\"added just now\",\r\n    \"likes\":0,\r\n    \"course\":\"CS253A\",\r\n    \"receiver_email_id\":\"isaha@iitk.ac.in\",\r\n    \"post_anonymous\":1,\r\n    \"date_time\":\"2022-03-24T07:25:28.962+00:00\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/forum/add",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"forum",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add forum response",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"forum_uuid\":3000000,\r\n    \"responder_email_id\":\"isaha@iitk.ac.in\", \r\n    \"response_text\":\"added just now\",\r\n    \"course\":\"CS253A\",\r\n    \"likes\":0,\r\n    \"post_anonymous\":0,\r\n    \"date_time\":\"2022-03-24T07:25:28.962+00:00\",\r\n    \"receiver_email_id\":\"akshan@iitk.ac.in\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/forumResponse/add",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"forumResponse",
+						"add"
+					]
+				}
 			},
 			"response": []
 		}

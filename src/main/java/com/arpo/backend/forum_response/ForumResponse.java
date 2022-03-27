@@ -98,15 +98,15 @@ public class ForumResponse {
         this.course = course;
     }
 
-    public void setRole(int likes) {
+    public void setLikes(int likes) {
         this.likes = likes;
     }
 
-    public void setRole(boolean post_anonymous) {
+    public void setPost_anonymous(boolean post_anonymous) {
         this.post_anonymous = post_anonymous;
     }
 
-    public void setRole(String date_time) {
+    public void setDate_time(String date_time) {
         this.date_time = date_time;
     }
 

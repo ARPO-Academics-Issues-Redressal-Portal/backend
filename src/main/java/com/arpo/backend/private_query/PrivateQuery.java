@@ -17,7 +17,7 @@ public class PrivateQuery {
     @Column
     private String description;
     @Column
-    private String course;
+    public String course;
     @Column
     private String status;
     @Column

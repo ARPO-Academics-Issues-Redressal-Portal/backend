@@ -35,7 +35,7 @@ public class NotificationController {
         }
     }
 
-    @PostMapping("add/")
+    @PostMapping("/add")
     public ResponseEntity add(@RequestBody Notification notification){
         try {
             try {
@@ -50,7 +50,7 @@ public class NotificationController {
         return new ResponseEntity(APIResponses.ELEMENT_ADDED, HttpStatus.OK);
     }
 
-    @PutMapping("update/{uuid}")
+    @PutMapping("/update/{uuid}")
     public ResponseEntity<?> update(@RequestBody Notification notification, @PathVariable int uuid){
         Notification existNotification;
         try {
@@ -72,7 +72,7 @@ public class NotificationController {
         }
     }
 
-    @DeleteMapping("delete/{uuid}")
+    @DeleteMapping("/delete/{uuid}")
     public ResponseEntity delete(@PathVariable int uuid) {
         try {
             notificationService.deleteNotification(uuid);

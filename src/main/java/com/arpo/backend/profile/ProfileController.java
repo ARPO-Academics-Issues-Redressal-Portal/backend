@@ -35,7 +35,7 @@ public class ProfileController {
         }
     }
 
-    @PostMapping("add/")
+    @PostMapping("/add")
     public ResponseEntity add(@RequestBody Profile profile){
         try {
             try {
@@ -50,7 +50,7 @@ public class ProfileController {
         return new ResponseEntity(APIResponses.ELEMENT_ADDED, HttpStatus.OK);
     }
 
-    @PutMapping("update/{uuid}")
+    @PutMapping("/update/{uuid}")
     public ResponseEntity<?> update(@RequestBody Profile profile, @PathVariable int uuid){
         Profile existProfile;
         try {
@@ -72,7 +72,7 @@ public class ProfileController {
         }
     }
 
-    @DeleteMapping("delete/{uuid}")
+    @DeleteMapping("/delete/{uuid}")
     public ResponseEntity delete(@PathVariable int uuid) {
         try {
             profileService.deleteProfile(uuid);
@@ -83,7 +83,7 @@ public class ProfileController {
         return new ResponseEntity(APIResponses.ELEMENT_DELETED, HttpStatus.OK);
     }
 
-    @GetMapping("profileByLoginAndPassword")
+    @GetMapping("/profileByLoginAndPassword")
     public ResponseEntity<?> findProfileID(@RequestParam String login_id, @RequestParam String password)
     {
         try{

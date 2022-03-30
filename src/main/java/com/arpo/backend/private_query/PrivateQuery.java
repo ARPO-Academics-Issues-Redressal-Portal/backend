@@ -16,7 +16,7 @@ public class PrivateQuery {
     private int profile_id;
     @Column
     private String description;
-    @Column
+    @Column(name = "course")
     public String course;
     @Column
     private String status;

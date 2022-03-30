@@ -18,7 +18,7 @@ public class Forum {
     private String description;
     @Column
     private int likes;
-    @Column
+    @Column(name="course")
     private String course;
     @Column
     private String receiver_email_id;

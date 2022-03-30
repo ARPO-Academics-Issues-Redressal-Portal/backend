@@ -92,8 +92,9 @@ public class ForumResponseController {
                 throw new NoSuchElementException();
             }
             return new ResponseEntity<List<ForumResponse>>(forumResponses, HttpStatus.OK);
+
         } catch (NoSuchElementException e){
-            return new ResponseEntity<ForumResponse>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity(APIResponses.ELEMENT_NOT_FOUND, HttpStatus.NOT_FOUND);
         }
     }
 }

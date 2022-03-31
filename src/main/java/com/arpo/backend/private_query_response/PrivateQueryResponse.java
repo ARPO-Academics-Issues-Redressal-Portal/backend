@@ -89,7 +89,7 @@ public class PrivateQueryResponse {
 
     public void setCourse(String Course) {
 
-        this.course=course;
+        this.course=Course;
     }
 
     public void setDate_time(String date_time) {

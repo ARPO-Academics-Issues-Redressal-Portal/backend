@@ -109,4 +109,5 @@ public class ProfileController {
             return new ResponseEntity<Profile>(HttpStatus.NOT_FOUND);
         }
     }
+
 }

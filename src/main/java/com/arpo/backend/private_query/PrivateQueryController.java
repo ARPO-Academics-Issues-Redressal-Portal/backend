@@ -6,10 +6,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Map;
 import java.util.Objects;
 import java.util.List;
 import java.util.NoSuchElementException;
-
 
 
 @RestController
@@ -40,8 +40,6 @@ public class PrivateQueryController {
     public ResponseEntity add(@RequestBody PrivateQuery privateQuery){
         try {
             try {
-                System.out.println(privateQuery.getCourse());
-                System.out.println(privateQuery.getTitle());
                 privateQueryService.savePrivateQuery(privateQuery);
             } catch (Exception e) {
                 throw new Exception();
@@ -52,7 +50,6 @@ public class PrivateQueryController {
         }
         return new ResponseEntity(APIResponses.ELEMENT_ADDED, HttpStatus.OK);
     }
-
 
     @PutMapping("/update/{uuid}")
     public ResponseEntity<?> update(@RequestBody PrivateQuery privateQuery, @PathVariable int uuid){
@@ -112,7 +109,7 @@ public class PrivateQueryController {
             }
             return new ResponseEntity<List<PrivateQuery>>(query, HttpStatus.OK);
         } catch (NoSuchElementException e){
-            return new ResponseEntity<PrivateQuery>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(APIResponses.ELEMENT_NOT_FOUND,HttpStatus.NOT_FOUND);
         }
     }
 }

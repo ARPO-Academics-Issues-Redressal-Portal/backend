@@ -34,7 +34,7 @@ public class OtherQuery {
         this.profile_id=profile_id;
         this.description=description;
         this.status=status;
-        this.receiver_email_id=receiver_email_id;
+        this.receiver_email_id = receiver_email_id;
         this.date_time=date_time;
         this.category =category;
     }
@@ -101,7 +101,7 @@ public class OtherQuery {
     }
     public void setReceiver_email_id(String receiver_email_id) {
 
-        this.receiver_email_id=receiver_email_id;
+        this.receiver_email_id = receiver_email_id;
     }
 
     public void setDate_time(String date_time) {

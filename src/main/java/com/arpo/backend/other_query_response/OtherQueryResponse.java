@@ -28,7 +28,7 @@ public class OtherQueryResponse {
         this.uuid = uuid;
         this.query_uuid=query_uuid;
         this.receiver_email_id=receiver_email_id;
-        this.responder_email_id=responder_email_id;
+        this.responder_email_id = responder_email_id;
         this.date_time=date_time;
         this.response_text=response_text;
     }
@@ -77,7 +77,7 @@ public class OtherQueryResponse {
 
     public void setResponder_email_id(String responder_email_id) {
 
-        this.responder_email_id=responder_email_id;
+        this.responder_email_id = responder_email_id;
     }
 
 

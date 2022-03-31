@@ -1,5 +1,6 @@
 package com.arpo.backend.other_query_response;
 
+import com.arpo.backend.private_query_response.PrivateQueryResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,5 +28,9 @@ public class OtherQueryResponseService{
 
     public void deleteOtherQueryResponse(int uuid){
         otherQueryResponseRepo.deleteById(uuid);
+    }
+
+    public List<OtherQueryResponse> queryResponseByQueryUUID(int query_uuid){
+        return otherQueryResponseRepo.queryResponseByQueryUUID(query_uuid);
     }
 }

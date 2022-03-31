@@ -1,6 +1,7 @@
 package com.arpo.backend.other_query_response;
 
 import com.arpo.backend.APIResponses;
+import com.arpo.backend.private_query_response.PrivateQueryResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -10,6 +11,7 @@ import java.util.Objects;
 import java.util.List;
 import java.util.NoSuchElementException;
 
+import com.arpo.backend.APIResponses;
 
 @RestController
 @RequestMapping("/otherQueryResponse")
@@ -81,6 +83,19 @@ public class OtherQueryResponseController {
             return new ResponseEntity(APIResponses.ELEMENT_NOT_DELETED, HttpStatus.BAD_REQUEST);
         }
         return new ResponseEntity(APIResponses.ELEMENT_DELETED, HttpStatus.OK);
+    }
+
+    @GetMapping("/otherQueryResponseByQueryUUID")
+    public ResponseEntity<?> getResponses(@RequestParam int queryUuid){
+        try{
+            List<OtherQueryResponse> queryResponses = otherQueryResponseService.queryResponseByQueryUUID(queryUuid);
+            if(Objects.isNull(queryResponses)){
+                throw new NoSuchElementException();
+            }
+            return new ResponseEntity<List<OtherQueryResponse>>(queryResponses, HttpStatus.OK);
+        } catch (NoSuchElementException e){
+            return new ResponseEntity<>(APIResponses.ELEMENT_NOT_FOUND,HttpStatus.NOT_FOUND);
+        }
     }
 
 }

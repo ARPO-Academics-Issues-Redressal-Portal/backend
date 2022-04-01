@@ -93,7 +93,7 @@ public class ProfileController {
             }
             return new ResponseEntity<Profile>(profile, HttpStatus.OK);
         } catch (NoSuchElementException e){
-            return new ResponseEntity<Profile>( HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(APIResponses.ELEMENT_NOT_FOUND, HttpStatus.NOT_FOUND);
         }
     }
 
@@ -106,7 +106,7 @@ public class ProfileController {
             }
             return new ResponseEntity<Profile>(profile, HttpStatus.OK);
         } catch (NoSuchElementException e){
-            return new ResponseEntity<Profile>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(APIResponses.ELEMENT_NOT_FOUND,HttpStatus.NOT_FOUND);
         }
     }
 

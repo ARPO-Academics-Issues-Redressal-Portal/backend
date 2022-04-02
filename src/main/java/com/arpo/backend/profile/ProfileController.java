@@ -39,7 +39,9 @@ public class ProfileController {
     public ResponseEntity add(@RequestBody Profile profile){
         try {
             try {
+//                System.out.println(profile.get);
                 profileService.saveProfile(profile);
+
             } catch (Exception e) {
                 throw new Exception();
             }

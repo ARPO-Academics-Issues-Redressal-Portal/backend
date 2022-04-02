@@ -93,7 +93,7 @@ public class PrivateQueryResponseController {
             }
             return new ResponseEntity<List<PrivateQueryResponse>>(queryResponses, HttpStatus.OK);
         } catch (NoSuchElementException e){
-            return new ResponseEntity<PrivateQueryResponse>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity(APIResponses.ELEMENT_NOT_FOUND,HttpStatus.NOT_FOUND);
         }
     }
 }

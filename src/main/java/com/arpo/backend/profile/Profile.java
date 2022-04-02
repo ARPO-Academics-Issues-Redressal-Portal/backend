@@ -7,7 +7,7 @@ import javax.persistence.*;
 @Table (name = "profile")
 public class Profile {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int uuid;
     @Column
     private String login_id;

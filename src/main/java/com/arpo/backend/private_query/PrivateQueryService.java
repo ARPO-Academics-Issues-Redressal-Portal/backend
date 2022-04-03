@@ -35,4 +35,11 @@ public class PrivateQueryService{
     public List<PrivateQuery> findQueriesByCourse(String course){
         return privateQueryRepo.findQueriesByCourse(course);
     }
+
+    public List<PrivateQuery> findByQueryUuids(List<Integer> uuid){
+        return privateQueryRepo.findAllById(uuid);
+    }
+    public List<PrivateQuery> saveAll(List<PrivateQuery> privateQueries){
+        return privateQueryRepo.saveAll(privateQueries);
+    }
 }

@@ -1,5 +1,6 @@
 package com.arpo.backend.other_query;
 
+import com.arpo.backend.private_query.PrivateQuery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,5 +28,12 @@ public class OtherQueryService{
 
     public void deleteOtherQuery(int uuid){
         otherQueryRepo.deleteById(uuid);
+    }
+
+    public List<OtherQuery> findByQueryUuids(List<Integer> uuid){
+        return otherQueryRepo.findAllById(uuid);
+    }
+    public List<OtherQuery> saveAll(List<OtherQuery> otherQueries){
+        return otherQueryRepo.saveAll(otherQueries);
     }
 }

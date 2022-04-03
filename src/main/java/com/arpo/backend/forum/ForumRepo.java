@@ -10,4 +10,6 @@ public interface ForumRepo extends JpaRepository<Forum, Integer> {
     @Query(value = "select * from forum f where f.course = ?1",
             nativeQuery = true)
     public List<Forum> forumByCourse(String course);
+    
+    
 }

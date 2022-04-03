@@ -1,6 +1,8 @@
 package com.arpo.backend.other_query;
 
 import com.arpo.backend.APIResponses;
+import com.arpo.backend.private_query.PrivateQuery;
+import com.arpo.backend.private_query.UuidList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -45,9 +47,9 @@ public class OtherQueryController {
             }
         }
         catch (Exception e){
-            return new ResponseEntity(APIResponses.BAD_REQUEST_BODY,HttpStatus.BAD_REQUEST);
+            return new ResponseEntity(APIResponses.sendResponses("1",APIResponses.BAD_REQUEST_BODY),HttpStatus.BAD_REQUEST);
         }
-        return new ResponseEntity(APIResponses.ELEMENT_ADDED, HttpStatus.OK);
+        return new ResponseEntity(APIResponses.sendResponses("0",APIResponses.ELEMENT_ADDED), HttpStatus.OK);
     }
 
     @PutMapping("/update/{uuid}")
@@ -60,7 +62,7 @@ public class OtherQueryController {
             }
         }
         catch (NoSuchElementException e){
-            return new ResponseEntity(APIResponses.ELEMENT_NOT_FOUND,HttpStatus.BAD_REQUEST);
+            return new ResponseEntity(APIResponses.sendResponses("1",APIResponses.ELEMENT_NOT_FOUND),HttpStatus.BAD_REQUEST);
         }
         try {
             otherQuery.setUuid(uuid);
@@ -68,7 +70,7 @@ public class OtherQueryController {
             return new ResponseEntity(otherQuery,HttpStatus.OK);
         }
         catch (Exception e){
-            return new ResponseEntity(APIResponses.BAD_REQUEST_BODY, HttpStatus.BAD_REQUEST);
+            return new ResponseEntity(APIResponses.sendResponses("1",APIResponses.BAD_REQUEST_BODY), HttpStatus.BAD_REQUEST);
         }
     }
 
@@ -78,9 +80,48 @@ public class OtherQueryController {
             otherQueryService.deleteOtherQuery(uuid);
         }
         catch (Exception e) {
-            return new ResponseEntity(APIResponses.ELEMENT_NOT_DELETED, HttpStatus.BAD_REQUEST);
+            return new ResponseEntity(APIResponses.sendResponses("1",APIResponses.ELEMENT_NOT_DELETED), HttpStatus.BAD_REQUEST);
         }
-        return new ResponseEntity(APIResponses.ELEMENT_DELETED, HttpStatus.OK);
+        return new ResponseEntity(APIResponses.sendResponses("0",APIResponses.ELEMENT_DELETED), HttpStatus.OK);
+    }
+
+    @PutMapping("/resolveSelected")
+    public ResponseEntity<?> resolveSelected(@RequestBody UuidList uuids){
+        List<OtherQuery> existOtherQueries;
+        try {
+            existOtherQueries = otherQueryService.findByQueryUuids(uuids.uuid);
+        }
+        catch (NoSuchElementException e){
+            return new ResponseEntity(APIResponses.sendResponses("1",APIResponses.ELEMENT_NOT_FOUND),HttpStatus.BAD_REQUEST);
+        }
+        try {
+            existOtherQueries.forEach(privateQuery -> privateQuery.setStatus("R"));
+            otherQueryService.saveAll(existOtherQueries);
+            return new ResponseEntity(existOtherQueries,HttpStatus.OK);
+        }
+        catch (Exception e){
+            return new ResponseEntity(APIResponses.sendResponses("1",APIResponses.BAD_REQUEST_BODY), HttpStatus.BAD_REQUEST);
+        }
+
+    }
+
+    @PutMapping("/rejectSelected")
+    public ResponseEntity<?> rejectSelected(@RequestBody UuidList uuids){
+        List<OtherQuery> existOtherQueries;
+        try {
+            existOtherQueries = otherQueryService.findByQueryUuids(uuids.uuid);
+        }
+        catch (NoSuchElementException e){
+            return new ResponseEntity(APIResponses.sendResponses("1",APIResponses.ELEMENT_NOT_FOUND),HttpStatus.BAD_REQUEST);
+        }
+        try {
+            existOtherQueries.forEach(otherQuery -> otherQuery.setStatus("U"));
+            otherQueryService.saveAll(existOtherQueries);
+            return new ResponseEntity(existOtherQueries,HttpStatus.OK);
+        }
+        catch (Exception e){
+            return new ResponseEntity(APIResponses.sendResponses("1",APIResponses.BAD_REQUEST_BODY), HttpStatus.BAD_REQUEST);
+        }
     }
 
 

@@ -45,9 +45,9 @@ public class PrivateQueryResponseController {
             }
         }
         catch (Exception e){
-            return new ResponseEntity(APIResponses.BAD_REQUEST_BODY,HttpStatus.BAD_REQUEST);
+            return new ResponseEntity(APIResponses.sendResponses("1",APIResponses.BAD_REQUEST_BODY),HttpStatus.BAD_REQUEST);
         }
-        return new ResponseEntity(APIResponses.ELEMENT_ADDED, HttpStatus.OK);
+        return new ResponseEntity(APIResponses.sendResponses("0",APIResponses.ELEMENT_ADDED), HttpStatus.OK);
     }
 
     @PutMapping("/update/{uuid}")
@@ -60,7 +60,7 @@ public class PrivateQueryResponseController {
             }
         }
         catch (NoSuchElementException e){
-            return new ResponseEntity(APIResponses.ELEMENT_NOT_FOUND,HttpStatus.BAD_REQUEST);
+            return new ResponseEntity(APIResponses.sendResponses("1",APIResponses.ELEMENT_NOT_FOUND),HttpStatus.BAD_REQUEST);
         }
         try {
             privateQueryResponse.setUuid(uuid);
@@ -68,7 +68,7 @@ public class PrivateQueryResponseController {
             return new ResponseEntity(privateQueryResponse,HttpStatus.OK);
         }
         catch (Exception e){
-            return new ResponseEntity(APIResponses.BAD_REQUEST_BODY, HttpStatus.BAD_REQUEST);
+            return new ResponseEntity(APIResponses.sendResponses("1",APIResponses.BAD_REQUEST_BODY), HttpStatus.BAD_REQUEST);
         }
 
     }
@@ -79,9 +79,9 @@ public class PrivateQueryResponseController {
             privateQueryResponseService.deletePrivateQueryResponse(uuid);
         }
         catch (Exception e) {
-            return new ResponseEntity(APIResponses.ELEMENT_NOT_DELETED, HttpStatus.BAD_REQUEST);
+            return new ResponseEntity(APIResponses.sendResponses("1",APIResponses.ELEMENT_NOT_DELETED), HttpStatus.BAD_REQUEST);
         }
-        return new ResponseEntity(APIResponses.ELEMENT_DELETED, HttpStatus.OK);
+        return new ResponseEntity(APIResponses.sendResponses("0",APIResponses.ELEMENT_DELETED), HttpStatus.OK);
     }
 
     @GetMapping("/privateQueryResponseByQueryUUID")
@@ -93,7 +93,7 @@ public class PrivateQueryResponseController {
             }
             return new ResponseEntity<List<PrivateQueryResponse>>(queryResponses, HttpStatus.OK);
         } catch (NoSuchElementException e){
-            return new ResponseEntity(APIResponses.ELEMENT_NOT_FOUND,HttpStatus.NOT_FOUND);
+            return new ResponseEntity(APIResponses.sendResponses("1",APIResponses.ELEMENT_NOT_FOUND),HttpStatus.NOT_FOUND);
         }
     }
 }

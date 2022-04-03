@@ -45,9 +45,9 @@ public class ForumResponseController {
             }
         }
         catch (Exception e){
-            return new ResponseEntity(APIResponses.BAD_REQUEST_BODY,HttpStatus.BAD_REQUEST);
+            return new ResponseEntity(APIResponses.sendResponses("1",APIResponses.BAD_REQUEST_BODY),HttpStatus.BAD_REQUEST);
         }
-        return new ResponseEntity(APIResponses.ELEMENT_ADDED, HttpStatus.OK);
+        return new ResponseEntity(APIResponses.sendResponses("0",APIResponses.ELEMENT_ADDED), HttpStatus.OK);
     }
 
     @PutMapping("/update/{uuid}")
@@ -60,7 +60,7 @@ public class ForumResponseController {
             }
         }
         catch (NoSuchElementException e){
-            return new ResponseEntity(APIResponses.ELEMENT_NOT_FOUND,HttpStatus.BAD_REQUEST);
+            return new ResponseEntity(APIResponses.sendResponses("1",APIResponses.ELEMENT_NOT_FOUND),HttpStatus.BAD_REQUEST);
         }
         try {
             forumResponse.setUuid(uuid);
@@ -68,7 +68,7 @@ public class ForumResponseController {
             return new ResponseEntity(forumResponse,HttpStatus.OK);
         }
         catch (Exception e){
-            return new ResponseEntity(APIResponses.BAD_REQUEST_BODY, HttpStatus.BAD_REQUEST);
+            return new ResponseEntity(APIResponses.sendResponses("1",APIResponses.BAD_REQUEST_BODY), HttpStatus.BAD_REQUEST);
         }
 
     }
@@ -79,9 +79,9 @@ public class ForumResponseController {
             forumResponseService.deleteForumResponse(uuid);
         }
         catch (Exception e) {
-            return new ResponseEntity(APIResponses.ELEMENT_NOT_DELETED, HttpStatus.BAD_REQUEST);
+            return new ResponseEntity(APIResponses.sendResponses("1",APIResponses.ELEMENT_NOT_DELETED), HttpStatus.BAD_REQUEST);
         }
-        return new ResponseEntity(APIResponses.ELEMENT_DELETED, HttpStatus.OK);
+        return new ResponseEntity(APIResponses.sendResponses("0",APIResponses.ELEMENT_DELETED), HttpStatus.OK);
     }
 
     @GetMapping("/forumResponseByForumUUID")
@@ -94,7 +94,7 @@ public class ForumResponseController {
             return new ResponseEntity<List<ForumResponse>>(forumResponses, HttpStatus.OK);
 
         } catch (NoSuchElementException e){
-            return new ResponseEntity(APIResponses.ELEMENT_NOT_FOUND, HttpStatus.NOT_FOUND);
+            return new ResponseEntity(APIResponses.sendResponses("1",APIResponses.ELEMENT_NOT_FOUND), HttpStatus.NOT_FOUND);
         }
     }
 }

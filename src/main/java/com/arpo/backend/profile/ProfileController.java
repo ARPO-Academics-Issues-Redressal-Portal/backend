@@ -47,9 +47,9 @@ public class ProfileController {
             }
         }
         catch (Exception e){
-            return new ResponseEntity(APIResponses.BAD_REQUEST_BODY,HttpStatus.BAD_REQUEST);
+            return new ResponseEntity(APIResponses.sendResponses("1",APIResponses.BAD_REQUEST_BODY),HttpStatus.BAD_REQUEST);
         }
-        return new ResponseEntity(APIResponses.ELEMENT_ADDED, HttpStatus.OK);
+        return new ResponseEntity(APIResponses.sendResponses("0",APIResponses.ELEMENT_ADDED), HttpStatus.OK);
     }
 
     @PutMapping("/update/{uuid}")
@@ -62,7 +62,7 @@ public class ProfileController {
             }
         }
         catch (NoSuchElementException e){
-            return new ResponseEntity(APIResponses.ELEMENT_NOT_FOUND,HttpStatus.BAD_REQUEST);
+            return new ResponseEntity(APIResponses.sendResponses("1",APIResponses.ELEMENT_NOT_FOUND),HttpStatus.BAD_REQUEST);
         }
         try {
             profile.setUuid(uuid);
@@ -70,7 +70,7 @@ public class ProfileController {
             return new ResponseEntity(profile,HttpStatus.OK);
         }
         catch (Exception e){
-            return new ResponseEntity(APIResponses.BAD_REQUEST_BODY, HttpStatus.BAD_REQUEST);
+            return new ResponseEntity(APIResponses.sendResponses("1",APIResponses.BAD_REQUEST_BODY), HttpStatus.BAD_REQUEST);
         }
     }
 
@@ -80,9 +80,9 @@ public class ProfileController {
             profileService.deleteProfile(uuid);
         }
         catch (Exception e) {
-            return new ResponseEntity(APIResponses.ELEMENT_NOT_DELETED, HttpStatus.BAD_REQUEST);
+            return new ResponseEntity(APIResponses.sendResponses("1",APIResponses.ELEMENT_NOT_DELETED), HttpStatus.BAD_REQUEST);
         }
-        return new ResponseEntity(APIResponses.ELEMENT_DELETED, HttpStatus.OK);
+        return new ResponseEntity(APIResponses.sendResponses("0",APIResponses.ELEMENT_DELETED), HttpStatus.OK);
     }
 
     @GetMapping("/profileByLoginAndPassword")
@@ -95,7 +95,7 @@ public class ProfileController {
             }
             return new ResponseEntity<Profile>(profile, HttpStatus.OK);
         } catch (NoSuchElementException e){
-            return new ResponseEntity<>(APIResponses.ELEMENT_NOT_FOUND, HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(APIResponses.sendResponses("1",APIResponses.ELEMENT_NOT_FOUND), HttpStatus.NOT_FOUND);
         }
     }
 
@@ -108,7 +108,7 @@ public class ProfileController {
             }
             return new ResponseEntity<Profile>(profile, HttpStatus.OK);
         } catch (NoSuchElementException e){
-            return new ResponseEntity<>(APIResponses.ELEMENT_NOT_FOUND,HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(APIResponses.sendResponses("1",APIResponses.ELEMENT_NOT_FOUND),HttpStatus.NOT_FOUND);
         }
     }
 

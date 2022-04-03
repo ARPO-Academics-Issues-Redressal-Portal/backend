@@ -44,9 +44,10 @@ public class AnnouncementController {
             }
         }
         catch (Exception e){
-            return new ResponseEntity(APIResponses.BAD_REQUEST_BODY,HttpStatus.BAD_REQUEST);
+
+            return new ResponseEntity(APIResponses.sendResponses("1", APIResponses.BAD_REQUEST_BODY),HttpStatus.BAD_REQUEST);
         }
-        return new ResponseEntity(APIResponses.ELEMENT_ADDED, HttpStatus.OK);
+        return new ResponseEntity(APIResponses.sendResponses("0", APIResponses.ELEMENT_ADDED), HttpStatus.OK);
     }
     @PutMapping("/update/{uuid}")
     public ResponseEntity<?> update(@RequestBody Announcement announcement, @PathVariable int uuid){
@@ -58,7 +59,7 @@ public class AnnouncementController {
             }
         }
         catch (NoSuchElementException e){
-            return new ResponseEntity(APIResponses.ELEMENT_NOT_FOUND,HttpStatus.BAD_REQUEST);
+            return new ResponseEntity(APIResponses.sendResponses("1",APIResponses.ELEMENT_NOT_FOUND),HttpStatus.BAD_REQUEST);
         }
         try {
             announcement.setUuid(uuid);
@@ -66,7 +67,7 @@ public class AnnouncementController {
             return new ResponseEntity(announcement,HttpStatus.OK);
         }
         catch (Exception e){
-            return new ResponseEntity(APIResponses.BAD_REQUEST_BODY, HttpStatus.BAD_REQUEST);
+            return new ResponseEntity(APIResponses.sendResponses("1",APIResponses.BAD_REQUEST_BODY), HttpStatus.BAD_REQUEST);
         }
 
     }
@@ -77,9 +78,9 @@ public class AnnouncementController {
             announcementService.deleteAnnouncement(uuid);
         }
         catch(Exception e) {
-            return new ResponseEntity(APIResponses.ELEMENT_NOT_DELETED, HttpStatus.BAD_REQUEST);
+            return new ResponseEntity(APIResponses.sendResponses("1",APIResponses.ELEMENT_NOT_DELETED), HttpStatus.BAD_REQUEST);
         }
-        return new ResponseEntity(APIResponses.ELEMENT_DELETED, HttpStatus.OK);
+        return new ResponseEntity(APIResponses.sendResponses("0",APIResponses.ELEMENT_DELETED), HttpStatus.OK);
     }
 
 
@@ -92,7 +93,7 @@ public class AnnouncementController {
             }
             return new ResponseEntity<List<Announcement>>(announcements, HttpStatus.OK);
         } catch (NoSuchElementException e){
-            return new ResponseEntity(APIResponses.ELEMENT_DELETED,HttpStatus.BAD_REQUEST);
+            return new ResponseEntity(APIResponses.sendResponses("1",APIResponses.ELEMENT_NOT_FOUND),HttpStatus.BAD_REQUEST);
         }
     }
 }

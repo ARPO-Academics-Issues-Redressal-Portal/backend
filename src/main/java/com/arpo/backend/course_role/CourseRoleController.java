@@ -30,7 +30,7 @@ public class CourseRoleController {
             }
             return new ResponseEntity<CourseRole>(courseRole, HttpStatus.OK);
         } catch (NoSuchElementException e) {
-            return new ResponseEntity(APIResponses.ELEMENT_NOT_FOUND,HttpStatus.BAD_REQUEST);
+            return new ResponseEntity(APIResponses.sendResponses("1",APIResponses.ELEMENT_NOT_FOUND),HttpStatus.BAD_REQUEST);
         }
     }
 
@@ -44,9 +44,9 @@ public class CourseRoleController {
             }
         }
         catch (Exception e){
-            return new ResponseEntity(APIResponses.BAD_REQUEST_BODY,HttpStatus.BAD_REQUEST);
+            return new ResponseEntity(APIResponses.sendResponses("1",APIResponses.BAD_REQUEST_BODY),HttpStatus.BAD_REQUEST);
         }
-        return new ResponseEntity(APIResponses.ELEMENT_ADDED, HttpStatus.OK);
+        return new ResponseEntity(APIResponses.sendResponses("0",APIResponses.ELEMENT_ADDED), HttpStatus.OK);
     }
 
     @PutMapping("/update/{uuid}")
@@ -59,7 +59,7 @@ public class CourseRoleController {
             }
         }
         catch (NoSuchElementException e){
-            return new ResponseEntity(APIResponses.ELEMENT_NOT_FOUND,HttpStatus.BAD_REQUEST);
+            return new ResponseEntity(APIResponses.sendResponses("1",APIResponses.ELEMENT_NOT_FOUND),HttpStatus.BAD_REQUEST);
         }
         try {
             courseRole.setUuid(uuid);
@@ -67,7 +67,7 @@ public class CourseRoleController {
             return new ResponseEntity(courseRole,HttpStatus.OK);
         }
         catch (Exception e){
-            return new ResponseEntity(APIResponses.BAD_REQUEST_BODY, HttpStatus.BAD_REQUEST);
+            return new ResponseEntity(APIResponses.sendResponses("1",APIResponses.BAD_REQUEST_BODY), HttpStatus.BAD_REQUEST);
         }
 
     }
@@ -78,9 +78,9 @@ public class CourseRoleController {
             courseRoleService.deleteCourseRole(uuid);
         }
         catch (Exception e) {
-            return new ResponseEntity(APIResponses.ELEMENT_NOT_DELETED, HttpStatus.BAD_REQUEST);
+            return new ResponseEntity(APIResponses.sendResponses("1",APIResponses.ELEMENT_NOT_DELETED), HttpStatus.BAD_REQUEST);
         }
-        return new ResponseEntity(APIResponses.ELEMENT_DELETED, HttpStatus.OK);
+        return new ResponseEntity(APIResponses.sendResponses("0",APIResponses.ELEMENT_DELETED), HttpStatus.OK);
     }
 
     @GetMapping("/roles")
@@ -92,7 +92,7 @@ public class CourseRoleController {
             }
             return new ResponseEntity<List<CourseRole>>(courseRoles, HttpStatus.OK);
         } catch (NoSuchElementException e){
-            return new ResponseEntity(APIResponses.ELEMENT_NOT_FOUND, HttpStatus.BAD_REQUEST);
+            return new ResponseEntity(APIResponses.sendResponses("1",APIResponses.ELEMENT_NOT_FOUND), HttpStatus.BAD_REQUEST);
         }
     }
 
@@ -105,7 +105,7 @@ public class CourseRoleController {
             }
             return new ResponseEntity<List<CourseRole>>(courseRoles, HttpStatus.OK);
         } catch (NoSuchElementException e){
-            return new ResponseEntity(APIResponses.ELEMENT_DELETED,HttpStatus.BAD_REQUEST);
+            return new ResponseEntity(APIResponses.sendResponses("1",APIResponses.ELEMENT_NOT_FOUND),HttpStatus.BAD_REQUEST);
         }
     }
 
@@ -118,7 +118,7 @@ public class CourseRoleController {
             }
             return new ResponseEntity<List<CourseRole>>(courseRoles, HttpStatus.OK);
         } catch (NoSuchElementException e){
-            return new ResponseEntity(APIResponses.ELEMENT_NOT_FOUND,HttpStatus.BAD_REQUEST);
+            return new ResponseEntity(APIResponses.sendResponses("1",APIResponses.ELEMENT_NOT_FOUND),HttpStatus.BAD_REQUEST);
         }
     }
 }

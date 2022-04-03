@@ -97,7 +97,7 @@ public class OtherQuery {
 
     public void setStatus(String Status) {
 
-        this.status=status;
+        this.status=Status;
     }
     public void setReceiver_email_id(String receiver_email_id) {
 
